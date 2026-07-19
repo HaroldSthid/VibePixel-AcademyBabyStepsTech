@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CodePen onboarding | VibePixel Academy BabyStepsTech</title>
+    <meta
+      name="description"
+      content="Guía no técnica para entender qué va en HTML, CSS y JS dentro de CodePen y cómo reconocer que funciona."
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
+      :root { color-scheme: light; --bg:#f4f2eb; --surface:#fbfaf6; --surface-alt:#efebe2; --text:#171717; --muted:#5f5a52; --brand:#171717; --brand-soft:#e4e0d7; --border:#d6d0c4; --accent-red:#c84949; --accent-green:#2f7d55; --accent-amber:#a66b2e; --shadow:0 10px 24px rgba(17,17,17,.06); --radius:8px; --max:1080px; }
+      * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+      body { margin:0; font-family:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color:var(--text); line-height:1.6; background:linear-gradient(180deg,#f5f3ed 0%,#eeebe3 100%); }
+      a { color:var(--brand); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.18em; } a:hover { text-decoration-thickness:2px; } a:focus-visible, .button:focus-visible { outline:2px solid var(--brand); outline-offset:3px; }
+      .shell { max-width:var(--max); margin:0 auto; padding:24px; } .topbar, .footer { display:flex; justify-content:space-between; gap:16px; align-items:center; } .topbar { margin-bottom:28px; } .brand { font-weight:800; letter-spacing:-.02em; } .nav { display:flex; flex-wrap:wrap; gap:8px; } .nav a, .button, .footer a { text-decoration:none; } .nav a { display:inline-flex; align-items:center; min-height:36px; padding:8px 12px; border:1px solid var(--brand); border-radius:6px; background:var(--brand); color:var(--surface); font-size:.88rem; font-weight:700; }
+      .hero, .card { background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--brand); border-radius:var(--radius); box-shadow:var(--shadow); } .hero { padding:36px; } .eyebrow { display:inline-flex; align-items:center; gap:8px; margin:0; padding:6px 12px; border-radius:6px; background:var(--brand-soft); color:var(--brand); font-size:.9rem; font-weight:700; }
+      h1, h2, h3 { margin:0 0 14px; line-height:1.15; } h1 { max-width:14ch; margin-top:16px; font-size:clamp(2.2rem,4vw,4rem); letter-spacing:-.04em; } .lead { max-width:72ch; color:var(--muted); font-size:1.1rem; } .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; } .button { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border:1px solid transparent; border-radius:6px; font-weight:700; } .button.primary { background:var(--brand); color:var(--surface); } .button.secondary { border-color:var(--border); color:var(--text); }
+      .section { margin-top:24px; } .grid { display:grid; gap:18px; } .grid.cards { grid-template-columns:repeat(12, minmax(0, 1fr)); } .card { grid-column:span 4; padding:22px; } .card:nth-of-type(3n + 1) { border-top-color:var(--accent-red); } .card:nth-of-type(3n + 2) { border-top-color:var(--accent-green); } .card:nth-of-type(3n) { border-top-color:var(--accent-amber); } .card.wide { grid-column:span 6; } .card.full { grid-column:1 / -1; } .card.soft { background:var(--surface-alt); } .section-title { font-size:1.5rem; } .meta { color:var(--muted); font-size:.95rem; } .list { margin:0; padding-left:18px; } .list li + li { margin-top:8px; } .timeline { display:grid; gap:14px; } .step { display:grid; grid-template-columns:56px 1fr; gap:14px; align-items:start; padding:18px; border:1px solid var(--border); border-left:4px solid var(--brand); border-radius:var(--radius); background:var(--surface); } .step:nth-child(3n + 1) { border-left-color:var(--accent-red); } .step:nth-child(3n + 2) { border-left-color:var(--accent-green); } .step:nth-child(3n) { border-left-color:var(--accent-amber); } .step-number { display:grid; width:56px; height:56px; place-items:center; border-radius:8px; background:var(--brand-soft); color:var(--brand); font-size:1.2rem; font-weight:800; } .pill-row { display:flex; flex-wrap:wrap; gap:10px; } .pill { padding:7px 12px; border:1px solid var(--border); border-left:4px solid var(--brand); border-radius:6px; background:var(--surface); color:var(--muted); font-size:.92rem; } .pill:nth-child(3n + 1) { border-left-color:var(--accent-red); } .pill:nth-child(3n + 2) { border-left-color:var(--accent-green); } .pill:nth-child(3n) { border-left-color:var(--accent-amber); } .footer { margin:30px 0 10px; color:var(--muted); font-size:.95rem; }
+      @media (max-width:860px) { .card, .card.wide { grid-column:1 / -1; } .topbar, .footer { flex-direction:column; align-items:flex-start; } .hero { padding:24px; } } @media (max-width:600px) { .shell { padding:16px; } .step { grid-template-columns:1fr; } .step-number { width:48px; height:48px; } }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VibePixel Academy BabyStepsTech</div>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="colab-onboarding.html">Colab</a>
+          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/artifacts/codepen/README.md">README CodePen</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">CodePen onboarding</p>
+          <h1>Separá HTML, CSS y JS sin enredarte.</h1>
+          <p class="lead">CodePen funciona como una mesa de armado. La tarea es simple: poner cada parte en su panel, mirar el preview y ajustar solo lo que corresponde.</p>
+          <div class="actions">
+            <a class="button primary" href="#paneles">Qué va en cada panel</a>
+            <a class="button secondary" href="#errores">Errores comunes</a>
+            <a class="button secondary" href="onboarding.html">Volver a la ruta</a>
+          </div>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="codepen-title">
+          <article class="card wide soft">
+            <h2 id="codepen-title" class="section-title">Qué es CodePen</h2>
+            <p class="meta">Es un editor web donde cada pieza vive separada: estructura, estilo y comportamiento. Para el estudiante, eso ayuda a ver qué hace cada cosa sin mezclar responsabilidades.</p>
+          </article>
+          <article class="card soft">
+            <h3>Meta</h3>
+            <p class="meta">Lograr un preview visible y fácil de explicar.</p>
+          </article>
+          <article class="card soft">
+            <h3>Regla práctica</h3>
+            <p class="meta">Copiá solo lo necesario para el panel correcto.</p>
+          </article>
+        </section>
+
+        <section id="paneles" class="section grid cards" aria-labelledby="panel-title">
+          <article class="card full">
+            <h2 id="panel-title" class="section-title">Qué va en cada panel</h2>
+            <div class="timeline">
+              <div class="step">
+                <div class="step-number">H</div>
+                <div>
+                  <h3>HTML</h3>
+                  <p class="meta">Acá van los textos, etiquetas y bloques visuales del taller.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> el contenido aparece ordenado y entendible en el preview.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">C</div>
+                <div>
+                  <h3>CSS</h3>
+                  <p class="meta">Acá van el layout, los colores y los detalles visuales.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> el diseño se ve limpio y el avatar se presenta con la estética del taller.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">J</div>
+                <div>
+                  <h3>JS</h3>
+                  <p class="meta">Acá va la URL pública del avatar y las interacciones pequeñas.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> el preview carga la imagen y los controles responden.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="success-title">
+          <article class="card wide soft">
+            <h2 id="success-title" class="section-title">Qué significa que salió bien</h2>
+            <ul class="list">
+              <li>El preview muestra el avatar exportado desde Colab.</li>
+              <li>No hay referencias a archivos locales del repositorio dentro de CodePen.</li>
+              <li>Los paneles se pueden editar por separado sin confusión.</li>
+              <li>La persona puede explicar qué cambió en HTML, CSS y JS.</li>
+            </ul>
+          </article>
+          <article class="card wide">
+            <h2 class="section-title">Fuentes para copiar</h2>
+            <p class="meta">Abrí estos archivos como referencia directa. Para HTML, copiá solo el bloque marcado entre comentarios dentro de <code>index.html</code>; para CSS y JS, copiá el archivo completo en su panel.</p>
+            <div class="pill-row">
+              <span class="pill"><a href="artifacts/codepen/index.html">index.html · solo bloque marcado</a></span>
+              <span class="pill"><a href="artifacts/codepen/styles.css">styles.css</a></span>
+              <span class="pill"><a href="artifacts/codepen/script.js">script.js</a></span>
+              <span class="pill"><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/tree/main/artifacts/codepen">Carpeta en GitHub</a></span>
+            </div>
+          </article>
+        </section>
+
+        <section id="errores" class="section grid cards" aria-labelledby="mistakes-title">
+          <article class="card full">
+            <h2 id="mistakes-title" class="section-title">Errores comunes y cómo leerlos</h2>
+            <div class="timeline">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                  <h3>Copiar el encabezado completo</h3>
+                  <p class="meta">No hace falta llevar el &lt;link&gt; local ni el &lt;script&gt; local. En CodePen, eso estorba.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                  <h3>Usar una URL privada</h3>
+                  <p class="meta">Si la imagen no es pública HTTPS, CodePen no la puede mostrar. El problema no está en el panel, sino en el acceso al archivo.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                  <h3>Mezclar todo en un solo lugar</h3>
+                  <p class="meta">Si HTML, CSS y JS se mezclan, se vuelve difícil aprender qué hace cada parte. Separarlos es parte del objetivo.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>CodePen es el taller final: simple, visible y editable.</span>
+        <span><a href="index.html">Volver al inicio</a></span>
+      </footer>
+    </div>
+  </body>
+</html>

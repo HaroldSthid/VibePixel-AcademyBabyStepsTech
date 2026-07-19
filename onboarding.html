@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Onboarding | VibePixel Academy BabyStepsTech</title>
+    <meta
+      name="description"
+      content="Ruta guiada para estudiantes no técnicos: qué abrir, qué hacer y qué evidencia de logro buscar en cada paso."
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
+
+      :root {
+        color-scheme: light;
+        --bg: #f4f2eb;
+        --surface: #fbfaf6;
+        --surface-alt: #efebe2;
+        --text: #171717;
+        --muted: #5f5a52;
+        --brand: #171717;
+        --brand-soft: #e4e0d7;
+        --border: #d6d0c4;
+        --accent-red: #c84949;
+        --accent-green: #2f7d55;
+        --accent-amber: #a66b2e;
+        --shadow: 0 10px 24px rgba(17, 17, 17, 0.06);
+        --radius: 8px;
+        --max: 1080px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        color: var(--text);
+        line-height: 1.6;
+        background: linear-gradient(180deg, #f5f3ed 0%, #eeebe3 100%);
+      }
+      a { color: var(--brand); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+      a:hover { text-decoration-thickness: 2px; }
+      a:focus-visible, .button:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+      .shell { max-width: var(--max); margin: 0 auto; padding: 24px; }
+      .topbar, .footer { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+      .topbar { margin-bottom: 28px; }
+      .brand { font-weight: 800; letter-spacing: -.02em; }
+      .nav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .nav a, .button, .footer a { text-decoration: none; }
+      .nav a {
+        display: inline-flex; align-items: center; min-height: 36px; padding: 8px 12px; border: 1px solid var(--brand);
+        border-radius: 6px; background: var(--brand); color: var(--surface); font-size: .88rem; font-weight: 700;
+      }
+      .hero, .card {
+        background: var(--surface); border: 1px solid var(--border); border-top: 4px solid var(--brand); border-radius: var(--radius); box-shadow: var(--shadow);
+      }
+      .hero { padding: 36px; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 6px 12px; border-radius: 6px; background: var(--brand-soft); color: var(--brand); font-size: .9rem; font-weight: 700; }
+      h1, h2, h3 { margin: 0 0 14px; line-height: 1.15; }
+      h1 { max-width: 14ch; margin-top: 16px; font-size: clamp(2.2rem, 4vw, 4rem); letter-spacing: -.04em; }
+      .lead { max-width: 72ch; color: var(--muted); font-size: 1.1rem; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+      .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid transparent; border-radius: 6px; font-weight: 700; }
+      .button.primary { background: var(--brand); color: var(--surface); }
+      .button.secondary { border-color: var(--border); color: var(--text); }
+      .section { margin-top: 24px; }
+      .grid { display: grid; gap: 18px; }
+      .grid.cards { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .card { grid-column: span 4; padding: 22px; }
+      .card:nth-of-type(3n + 1) { border-top-color: var(--accent-red); }
+      .card:nth-of-type(3n + 2) { border-top-color: var(--accent-green); }
+      .card:nth-of-type(3n) { border-top-color: var(--accent-amber); }
+      .card.wide { grid-column: span 6; }
+      .card.full { grid-column: 1 / -1; }
+      .card.soft { background: var(--surface-alt); }
+      .section-title { font-size: 1.5rem; }
+      .meta { color: var(--muted); font-size: .95rem; }
+      .list { margin: 0; padding-left: 18px; }
+      .list li + li { margin-top: 8px; }
+      .timeline { display: grid; gap: 14px; }
+      .step {
+        display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; padding: 18px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: var(--radius); background: var(--surface);
+      }
+      .step:nth-child(3n + 1) { border-left-color: var(--accent-red); }
+      .step:nth-child(3n + 2) { border-left-color: var(--accent-green); }
+      .step:nth-child(3n) { border-left-color: var(--accent-amber); }
+      .step-number { display: grid; width: 56px; height: 56px; place-items: center; border-radius: 8px; background: var(--brand-soft); color: var(--brand); font-size: 1.2rem; font-weight: 800; }
+      .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+      .pill { padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; }
+      .pill:nth-child(3n + 1) { border-left-color: var(--accent-red); }
+      .pill:nth-child(3n + 2) { border-left-color: var(--accent-green); }
+      .pill:nth-child(3n) { border-left-color: var(--accent-amber); }
+      .footer { margin: 30px 0 10px; color: var(--muted); font-size: .95rem; }
+      @media (max-width: 860px) {
+        .card, .card.wide { grid-column: 1 / -1; }
+        .topbar, .footer { flex-direction: column; align-items: flex-start; }
+        .hero { padding: 24px; }
+      }
+      @media (max-width: 600px) {
+        .shell { padding: 16px; }
+        .step { grid-template-columns: 1fr; }
+        .step-number { width: 48px; height: 48px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VibePixel Academy BabyStepsTech</div>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="colab-onboarding.html">Colab</a>
+          <a href="codepen-onboarding.html">CodePen</a>
+          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Referencia en GitHub</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Onboarding para empezar sin miedo</p>
+          <h1>Primero la ruta, después las herramientas.</h1>
+          <p class="lead">
+            Esta página está pensada para la primera visita. Te dice qué abrir, qué hacer y cómo reconocer que cada etapa salió bien.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#ruta">Ver ruta completa</a>
+            <a class="button secondary" href="colab-onboarding.html">Ir a Colab</a>
+            <a class="button secondary" href="codepen-onboarding.html">Ir a CodePen</a>
+          </div>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="quick-title">
+          <article class="card wide soft">
+            <h2 id="quick-title" class="section-title">Resumen rápido</h2>
+            <p class="meta">
+              El camino ideal es simple: entender la idea, completar la planilla, probar en Colab, pasar a CodePen y compartir el resultado.
+            </p>
+          </article>
+          <article class="card soft">
+            <h3>Resultado visible</h3>
+            <p class="meta">En cada etapa hay una evidencia concreta que te dice “ya está listo para avanzar”.</p>
+          </article>
+          <article class="card soft">
+            <h3>Regla de oro</h3>
+            <p class="meta">Si todavía no ves el resultado esperado, no saltes al siguiente paso.</p>
+          </article>
+        </section>
+
+        <section id="ruta" class="section grid cards" aria-labelledby="ruta-title">
+          <article class="card full">
+            <h2 id="ruta-title" class="section-title">Ruta guiada</h2>
+            <div class="timeline">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                  <h3>Abrí la guía del estudiante</h3>
+                  <p class="meta">Usala como mapa. No necesitás entender todo al principio; solo ubicar dónde empieza el recorrido.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> ves la ruta completa y sabes que no hace falta entrar al repositorio para arrancar.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                  <h3>Prepará la planilla</h3>
+                  <p class="meta">La planilla es el cuaderno visual. Cada celda representa una decisión simple sobre color o forma.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> el avatar queda dibujado y los colores se ven consistentes.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                  <h3>Probalo en Colab</h3>
+                  <p class="meta">Colab sirve para revisar, corregir y exportar. Acá no se “programa por programar”: se valida el material.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> aparece una vista previa del avatar y se genera una imagen o GIF descargable.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                  <h3>Llevá el resultado a CodePen</h3>
+                  <p class="meta">CodePen es el taller web. Cada panel tiene una tarea distinta y eso ayuda a no mezclar todo.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> el preview muestra el avatar y los paneles quedan ordenados por HTML, CSS y JS.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                  <h3>Revisá y compartí</h3>
+                  <p class="meta">Contá qué cambiaste, qué aprendiste y qué te gustaría mejorar después. La explicación también forma parte del aprendizaje.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> podés mostrar el resultado y explicar qué parte cambió y por qué.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="success-title">
+          <article class="card wide soft">
+            <h2 id="success-title" class="section-title">Qué significa “funciona”</h2>
+            <ul class="list">
+              <li>La persona no técnica puede seguir la ruta sin preguntar dónde empezar.</li>
+              <li>Cada etapa tiene un resultado visible que confirma el avance.</li>
+              <li>GitHub queda como referencia secundaria, no como la primera puerta.</li>
+              <li>El camino evita exceso de texto y evita mostrar código innecesario al inicio.</li>
+            </ul>
+          </article>
+          <article class="card wide">
+            <h2 class="section-title">Siguiente paso claro</h2>
+            <div class="pill-row">
+              <span class="pill"><a href="colab-onboarding.html">Abrir Colab</a></span>
+              <span class="pill"><a href="codepen-onboarding.html">Abrir CodePen</a></span>
+              <span class="pill"><a href="index.html">Volver al inicio</a></span>
+              <span class="pill"><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Referencia GitHub</a></span>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Empieza por aquí cuando no quieras pelearte con el repositorio.</span>
+        <span><a href="index.html">Volver al inicio</a></span>
+      </footer>
+    </div>
+  </body>
+</html>
