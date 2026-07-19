@@ -7,11 +7,23 @@ the full application stack.
 
 from __future__ import annotations
 
+import contextlib
+import io
 import json
+import os
 import tempfile
 from pathlib import Path
+import urllib.request
 
 from avatar_pipeline import AvatarPipelineError, Image, export_avatar, load_avatar_frames, preview_avatar
+
+
+NOTEBOOK_PATH = Path(__file__).with_name("vibepixel_avatar_pipeline.ipynb")
+EXPECTED_AVATAR_PIPELINE_URL = "https://raw.githubusercontent.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/main/artifacts/colab/avatar_pipeline.py"
+EXPECTED_SAMPLE_CSV_URL = "https://raw.githubusercontent.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/main/artifacts/spreadsheet/templates/avatar-16x16.csv"
+EXPECTED_SAMPLE_DOWNLOAD_MESSAGE = "No encontramos avatar-16x16.csv, así que cargamos un ejemplo para que puedas seguir. Después podés reemplazarlo por tu propio CSV exportado."
+EXPECTED_SAMPLE_FAILURE_MESSAGE = "No pudimos descargar el CSV de ejemplo automáticamente. Revisá tu conexión, subí tu propio CSV exportado y volvé a ejecutar esta celda."
+EXPECTED_PIPELINE_FAILURE_MESSAGE = "No pudimos cargar avatar_pipeline.py automáticamente. Verificá tu conexión a internet y volvé a ejecutar la celda."
 
 
 VALID_IMPORT_CSV = """frame_id,row,col,value
@@ -45,6 +57,112 @@ def _write_fixture(directory: Path, name: str, content: str) -> Path:
 def _check(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+def _load_notebook() -> dict:
+    return json.loads(NOTEBOOK_PATH.read_text(encoding="utf-8"))
+
+
+def _iter_code_cells(notebook: dict) -> list[str]:
+    sources: list[str] = []
+    for cell in notebook.get("cells", []):
+        if cell.get("cell_type") == "code":
+            sources.append("".join(cell.get("source", [])))
+    return sources
+
+
+def _compile_notebook_code_cells(notebook: dict) -> None:
+    for index, source in enumerate(_iter_code_cells(notebook), start=1):
+        compile(source, f"{NOTEBOOK_PATH.name}#cell{index}", "exec")
+
+
+def _cell_source_by_id(notebook: dict, cell_id: str) -> str:
+    for cell in notebook.get("cells", []):
+        if cell.get("cell_type") == "code" and cell.get("metadata", {}).get("id") == cell_id:
+            return "".join(cell.get("source", []))
+    raise AssertionError(f"Could not find notebook code cell with id '{cell_id}'.")
+
+
+def check_notebook_fallback_contract() -> None:
+    notebook = _load_notebook()
+    notebook_text = json.dumps(notebook, ensure_ascii=False)
+
+    _check(EXPECTED_AVATAR_PIPELINE_URL in notebook_text, "Notebook should reference the raw avatar_pipeline.py URL.")
+    _check(EXPECTED_SAMPLE_CSV_URL in notebook_text, "Notebook should reference the raw sample CSV URL.")
+    _check("urlopen(" in notebook_text, "Notebook fallback should use bounded urlopen-based downloads.")
+    _check("timeout=" in notebook_text, "Notebook downloads should be bounded with a timeout.")
+    _check(EXPECTED_SAMPLE_DOWNLOAD_MESSAGE in notebook_text, "Notebook should show the learner-facing first-run recovery message.")
+    _check(EXPECTED_SAMPLE_FAILURE_MESSAGE in notebook_text, "Notebook should show a learner-friendly sample CSV failure message.")
+    _check(EXPECTED_PIPELINE_FAILURE_MESSAGE in notebook_text, "Notebook should show a learner-friendly pipeline bootstrap failure message.")
+
+    _compile_notebook_code_cells(notebook)
+
+    imports_source = _cell_source_by_id(notebook, "imports")
+    load_data_source = _cell_source_by_id(notebook, "load-data")
+
+    namespace: dict[str, object] = {"__name__": "__main__"}
+    exec(imports_source, namespace)
+
+    fake_csv = VALID_IMPORT_CSV.encode("utf-8")
+
+    class _FakeResponse:
+        def __init__(self, payload: bytes):
+            self._payload = payload
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def read(self):
+            return self._payload
+
+    def _fake_urlopen(url, timeout=0):
+        _check(url == EXPECTED_SAMPLE_CSV_URL, f"Unexpected notebook fallback URL: {url}")
+        _check(timeout == 10, f"Notebook timeout changed: {timeout}.")
+        return _FakeResponse(fake_csv)
+
+    original_cwd = Path.cwd()
+    original_urlopen = namespace["urllib"].request.urlopen  # type: ignore[index]
+    with tempfile.TemporaryDirectory() as temp_dir:
+        try:
+            os.chdir(temp_dir)
+            namespace["urllib"].request.urlopen = _fake_urlopen  # type: ignore[index]
+            stdout = io.StringIO()
+            with contextlib.redirect_stdout(stdout):
+                exec(load_data_source, namespace)
+        finally:
+            namespace["urllib"].request.urlopen = original_urlopen  # type: ignore[index]
+            os.chdir(original_cwd)
+
+        _check(Path(temp_dir, "avatar-16x16.csv").exists(), "Fallback should create avatar-16x16.csv when missing.")
+        _check(len(namespace["frames"]) == 2, "Fallback sample should load 2 frames.")  # type: ignore[index]
+        _check(EXPECTED_SAMPLE_DOWNLOAD_MESSAGE in stdout.getvalue(), "Notebook should print the first-run recovery message.")
+
+    failing_namespace: dict[str, object] = {"__name__": "__main__"}
+    exec(imports_source, failing_namespace)
+
+    def _failing_urlopen(url, timeout=0):
+        raise TimeoutError("simulated timeout")
+
+    failing_original_cwd = Path.cwd()
+    failing_original_urlopen = failing_namespace["urllib"].request.urlopen  # type: ignore[index]
+    with tempfile.TemporaryDirectory() as temp_dir:
+        try:
+            os.chdir(temp_dir)
+            failing_namespace["urllib"].request.urlopen = _failing_urlopen  # type: ignore[index]
+            try:
+                with contextlib.redirect_stdout(io.StringIO()):
+                    exec(load_data_source, failing_namespace)
+            except FileNotFoundError as exc:
+                message = str(exc)
+                _check(EXPECTED_SAMPLE_FAILURE_MESSAGE in message, "Sample CSV failure path should give learner guidance.")
+            else:
+                raise AssertionError("Expected the sample CSV fallback to fail when the download times out.")
+        finally:
+            failing_namespace["urllib"].request.urlopen = failing_original_urlopen  # type: ignore[index]
+            os.chdir(failing_original_cwd)
 
 
 def check_valid_imports() -> None:
@@ -127,6 +245,9 @@ def check_preview_and_exports() -> dict[str, str]:
 
 def run_contract_checks() -> list[dict[str, str]]:
     checks = []
+
+    check_notebook_fallback_contract()
+    checks.append({"check": "notebook_fallback_contract", "status": "passed"})
 
     check_valid_imports()
     checks.append({"check": "valid_imports", "status": "passed"})

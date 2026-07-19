@@ -1,17 +1,17 @@
 # Colab Learning Artifact
 
-Use this folder to parse the spreadsheet export, preview the avatar, and export a GIF or still image for the next workshop step.
+Usá esta carpeta para importar la exportación de la planilla, previsualizar el avatar y exportar un GIF o una imagen fija para el siguiente paso del taller.
 
-## Quick path
+## Ruta rápida
 
-1. Copy the exported spreadsheet CSV into the Colab session or point the notebook at `artifacts/spreadsheet/templates/avatar-16x16.csv`.
-2. Open `vibepixel_avatar_pipeline.ipynb` and run the import, preview, and export cells in order. The first import cell will fetch `avatar_pipeline.py` automatically if it is missing, so students do not need to copy files by hand.
-3. If your export has one frame only, use the generated still preview image.
-4. Copy the exported GIF or PNG into `artifacts/exports/avatars/` when you want the repo-hosted handoff.
+1. Abrí `vibepixel_avatar_pipeline.ipynb` y ejecutá las celdas en orden. La notebook baja `avatar_pipeline.py` y un CSV de ejemplo automáticamente si faltan, así que podés ver el flujo completo sin subir archivos a mano.
+2. Si ya tenés tu propia exportación, reemplazá `avatar-16x16.csv` por ese archivo y volvé a ejecutar la celda de carga.
+3. Si tu exportación tiene un solo frame, usá la imagen fija generada como preview.
+4. Copiá el GIF o PNG exportado en `artifacts/exports/avatars/` cuando quieras dejar listo el handoff dentro del repo.
 
-## Validation
+## Validación
 
-Run `python validate_avatar_pipeline.py` in the same folder to check valid imports, invalid-cell guidance, preview rendering, multi-frame GIF export, and the single-frame fallback. If Pillow is missing, install it first with `pip install pillow`.
+Ejecutá `python validate_avatar_pipeline.py` en la misma carpeta para chequear imports válidos, ayuda ante celdas inválidas, renderizado del preview, exportación GIF multi-frame, el fallback de primera corrida del CSV y el mensaje de recuperación del notebook. Si falta Pillow, instalalo con `pip install pillow` primero.
 
 ## Files
 
