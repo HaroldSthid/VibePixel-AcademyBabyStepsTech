@@ -1,0 +1,14 @@
+{
+  "updatedAt": "YYYY-MM-DD",
+  "entries": [
+    {
+      "rank": 1,
+      "alias": "ALIAS",
+      "recognitionDate": "YYYY-MM-DD",
+      "dateSource": "review | merge | PR publication",
+      "imagePreviewPath": "top10/previews/ALIAS.png",
+      "evidenceUrl": "https://github.com/<org>/<repo>/pull/123",
+      "shortNote": "Texto corto y amable sobre el logro."
+    }
+  ]
+}

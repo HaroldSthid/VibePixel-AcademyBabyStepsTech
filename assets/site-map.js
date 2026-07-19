@@ -43,6 +43,14 @@
       before: "Antes necesitás CodePen.",
       after: "Después cerrás el recorrido y compartís la evidencia.",
     },
+    {
+      key: "top10",
+      label: "Top 10",
+      href: "top10.html",
+      before: "Antes necesitás haber pasado por Entrega Top 10.",
+      after: "Después queda la referencia para celebraciones y reconocimiento.",
+      note: "Publicación manual: solo muestra entregas revisadas y seleccionadas.",
+    },
   ];
 
   const extras = [
@@ -301,6 +309,8 @@
         return "codepen";
       case "submissions.html":
         return "submissions";
+      case "top10.html":
+        return "top10";
       default:
         return "";
     }
