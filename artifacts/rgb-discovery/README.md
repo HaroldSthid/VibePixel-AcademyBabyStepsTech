@@ -7,6 +7,7 @@ Podés conversar con tu grupo, pero el Top 10 es individual: cada persona tiene 
 ## Acceso amigable
 
 - [Versión web para estudiantes](./rgb-discovery.html)
+- [Colab paso a paso](https://colab.research.google.com/github/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/artifacts/colab/rgb_discovery_challenge.ipynb)
 - [Abrir CSV](./rgb-discovery.csv)
 - [Abrir PNG de vista previa](./rgb-discovery-preview.png)
 - [Guía de entregas individuales](../../submissions.html)
@@ -16,7 +17,7 @@ Podés conversar con tu grupo, pero el Top 10 es individual: cada persona tiene 
 1. Abrí [`rgb-discovery.csv`](./rgb-discovery.csv).
 2. Buscá el patrón de colores fila por fila.
 3. Compará el resultado con [`rgb-discovery-preview.png`](./rgb-discovery-preview.png).
-4. Recién después seguí con Colab.
+4. Recién después abrí el Colab paso a paso si querés practicar la conversión completa.
 
 ## Qué debería pasar
 

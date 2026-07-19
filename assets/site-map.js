@@ -27,7 +27,7 @@
       href: "colab-onboarding.html",
       before: "Antes necesitás el Desafío RGB.",
       after: "Después seguís con CodePen.",
-       note: "El pipeline de avatar y los datos de ejemplo ya están disponibles. La guía paso a paso de Colab RGB sigue en preparación.",
+      note: "El pipeline de avatar y los datos de ejemplo ya están disponibles. La guía paso a paso de Colab RGB ya está publicada.",
     },
     {
       key: "codepen",
@@ -204,12 +204,12 @@
         </a>
         <p class="site-map__hint"><strong>Antes necesitás…</strong> ${escapeHtml(item.before)} <strong>Después seguís con…</strong> ${escapeHtml(item.after)}</p>
         ${item.note ? `
-          <div class="site-map__alert" role="note" aria-label="En preparación">
+          <div class="site-map__alert" role="note" aria-label="Publicado">
             <svg class="site-map__alert-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
               <path d="M10 2 1.7 17h16.6L10 2zm0 4.1 4.7 8.4H5.3L10 6.1zm0 3.1c.44 0 .8.36.8.8v2.9a.8.8 0 1 1-1.6 0V10c0-.44.36-.8.8-.8zm0 6.1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="currentColor"/>
             </svg>
             <div class="site-map__alert-body">
-              <strong class="site-map__alert-title">En preparación</strong>
+              <strong class="site-map__alert-title">Publicado</strong>
               <p class="site-map__alert-text">${escapeHtml(item.note)}</p>
             </div>
           </div>

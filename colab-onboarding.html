@@ -42,18 +42,33 @@
           <h1>Usá Colab como laboratorio, no como obstáculo.</h1>
           <p class="lead">Acá lo importante es ver el resultado. Abrís el notebook, seguís los pasos en orden y revisás que la vista previa y la exportación aparezcan.</p>
           <div class="actions">
-            <a class="button primary" href="https://colab.research.google.com/github/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/artifacts/colab/vibepixel_avatar_pipeline.ipynb">Abrir notebook en Colab</a>
+            <a class="button primary" href="https://colab.research.google.com/github/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/artifacts/colab/vibepixel_avatar_pipeline.ipynb">Abrir notebook de avatar</a>
+            <a class="button secondary" href="https://colab.research.google.com/github/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/artifacts/colab/rgb_discovery_challenge.ipynb">Abrir Colab RGB paso a paso</a>
             <a class="button secondary" href="#que-hacer">Qué hacer</a>
             <a class="button secondary" href="#si-falla">Si falla</a>
             <a class="button secondary" href="codepen-onboarding.html">Después ir a CodePen</a>
           </div>
         </section>
 
+        <section class="section grid cards" aria-labelledby="mini-rgb-title">
+          <article class="card full soft">
+            <h2 id="mini-rgb-title" class="section-title">Mini recorrido RGB: la ruta corta</h2>
+            <p class="meta">Para el desafío RGB, el camino más simple es este: primero mirá la imagen de ejemplo, después corré todo y recién al final probá con tu propia imagen.</p>
+            <ol class="list">
+              <li>Abrí el Colab RGB paso a paso.</li>
+              <li>Dejá la imagen de ejemplo al principio.</li>
+              <li>Ejecutá todas las celdas en orden.</li>
+              <li>Descargá el CSV y el PNG generados.</li>
+              <li>Cuando el flujo funcione, reemplazá la muestra por tu propia imagen.</li>
+            </ol>
+          </article>
+        </section>
+
         <section class="section grid cards" aria-labelledby="colab-title">
           <article class="card wide soft">
             <h2 id="colab-title" class="section-title">Qué es Colab</h2>
             <p class="meta">Es un espacio en el navegador para ejecutar el taller de avatar sin instalar nada. Para el aprendizaje inicial, funciona como un laboratorio guiado.</p>
-            <p class="meta">Hoy este notebook acompaña el avatar pipeline y usa datos de ejemplo. No recrea todavía cada paso del desafío RGB; ese notebook sigue en preparación.</p>
+            <p class="meta">Hoy este notebook acompaña el avatar pipeline y usa datos de ejemplo. Para el desafío RGB ya está disponible una notebook dedicada, con el recorrido paso a paso y el exportado de CSV/PNG.</p>
           </article>
           <article class="card soft">
             <h3>Lo que buscás</h3>
@@ -64,8 +79,8 @@
             <p class="meta">Entender toda la implementación interna antes de ver el resultado.</p>
           </article>
           <article class="card soft">
-            <h3>Próximo Colab</h3>
-            <p class="meta">Colab del desafío RGB <strong>en preparación</strong>. Cuando esté listo, va a explicar ese camino con calma y paso a paso.</p>
+            <h3>Colab RGB disponible</h3>
+            <p class="meta"><a href="https://colab.research.google.com/github/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/artifacts/colab/rgb_discovery_challenge.ipynb">Colab del desafío RGB paso a paso</a>. Ya está publicado para seguir el recorrido con calma, sin saltos.</p>
           </article>
         </section>
 
@@ -85,8 +100,8 @@
               <div class="step">
                 <div class="step-number">2</div>
                 <div>
-                  <h3>Copiá o conectá los datos</h3>
-                  <p class="meta">La notebook baja un CSV de ejemplo automáticamente en la primera corrida. Después podés pegar tu exportación o reemplazar el template <a href="artifacts/spreadsheet/templates/avatar-16x16.csv">avatar-16x16.csv</a> por el tuyo.</p>
+                  <h3>Dejá la muestra primero</h3>
+                  <p class="meta">La notebook baja un CSV de ejemplo automáticamente en la primera corrida. Empezá con esa muestra y después, cuando ya veas el flujo completo, podés reemplazar el template <a href="artifacts/spreadsheet/templates/avatar-16x16.csv">avatar-16x16.csv</a> por el tuyo.</p>
                   <p class="meta"><strong>Evidencia de logro:</strong> la importación acepta los datos y no marca celdas inválidas.</p>
                 </div>
               </div>
@@ -94,7 +109,7 @@
                 <div class="step-number">3</div>
                 <div>
                   <h3>Ejecutá las celdas en orden</h3>
-                  <p class="meta">Primero importación, después vista previa y recién al final exportación. No mezcles el orden.</p>
+                  <p class="meta">Primero importación, después vista previa y recién al final exportación. No mezcles el orden ni cambies la muestra hasta que ya aparezca el resultado.</p>
                   <p class="meta"><strong>Evidencia de logro:</strong> aparece una preview ampliada del avatar.</p>
                 </div>
               </div>

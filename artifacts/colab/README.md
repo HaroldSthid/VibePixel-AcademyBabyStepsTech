@@ -1,32 +1,35 @@
 # Colab Learning Artifact
 
-Usá esta carpeta para importar la exportación de la planilla, previsualizar el avatar y exportar un GIF o una imagen fija para el siguiente paso del taller.
+Usá esta carpeta para el flujo de Colab del avatar y para el nuevo Colab paso a paso del desafío RGB.
 
 ## Ruta rápida
 
-1. Abrí `vibepixel_avatar_pipeline.ipynb` y ejecutá las celdas en orden. La notebook baja `avatar_pipeline.py` y un CSV de ejemplo automáticamente si faltan, así que podés ver el flujo completo sin subir archivos a mano.
-2. Si ya tenés tu propia exportación, reemplazá `avatar-16x16.csv` por ese archivo y volvé a ejecutar la celda de carga.
-3. Si tu exportación tiene un solo frame, usá la imagen fija generada como preview.
-4. Copiá el GIF o PNG exportado en `artifacts/exports/avatars/` cuando quieras dejar listo el handoff dentro del repo.
+1. Abrí `vibepixel_avatar_pipeline.ipynb` para el flujo del avatar o `rgb_discovery_challenge.ipynb` para el desafío RGB paso a paso.
+2. En la notebook RGB, dejá la imagen de ejemplo si querés una primera corrida automática; después podés cambiar la variable por tu JPG/PNG.
+3. Usá los nombres de salida claros (`rgb-discovery-output.csv` y `rgb-discovery-revealed.png`) para compartir la evidencia sin confundir archivos.
+4. Copiá los resultados a la carpeta de entrega que uses en tu clase o propuesta.
 
 ## Si algo falla
 
 - Si aparece un error que nombra `avatar_pipeline`, en Colab abrí **Runtime** en el menú superior, elegí **Restart runtime** y corré desde la primera celda. El notebook debería descargar el archivo solo.
-- Si aparece `avatar-16x16.csv` faltante, hacé lo mismo: **Runtime → Restart runtime** y empezá desde la primera celda para que baje la muestra automáticamente.
+- Si aparece `rgb_discovery_tools.py` o la imagen de ejemplo faltante, hacé lo mismo: **Runtime → Restart runtime** y empezá desde la primera celda para que baje los archivos automáticamente.
 - Si la red o GitHub están bloqueados, probá más tarde o pedile ayuda a quien esté facilitando la clase.
 - Cuando todo vuelve a andar, deberías ver la importación completa, la vista previa y la exportación final sin tocar archivos a mano.
 
 ## Validación para facilitadores / mantenimiento
 
-Ejecutá `python validate_avatar_pipeline.py` en la misma carpeta para chequear imports válidos, ayuda ante celdas inválidas, renderizado del preview, exportación GIF multi-frame, el fallback de primera corrida del CSV y el mensaje de recuperación del notebook. Si falta Pillow, instalalo con `pip install pillow` primero.
+Ejecutá `python validate_avatar_pipeline.py` para el flujo del avatar o `python validate_rgb_discovery_challenge.py` para el flujo RGB. Ambos chequearán imports válidos, fallback de primera corrida y exportación correcta. Si falta Pillow, instalalo con `pip install pillow` primero.
 
 ## Files
 
 | File | Purpose |
 |------|---------|
 | `avatar_pipeline.py` | Readable Python flow for parsing, previewing, and exporting frames. |
-| `vibepixel_avatar_pipeline.ipynb` | Colab notebook that mirrors the pipeline for learners. |
+| `vibepixel_avatar_pipeline.ipynb` | Colab notebook that mirrors the avatar pipeline for learners. |
+| `rgb_discovery_tools.py` | RGB image-to-CSV and CSV-to-image helpers for the step-by-step challenge. |
+| `rgb_discovery_challenge.ipynb` | Colab notebook that guides learners through upload, export, rebuild, and submission prep. |
 | `validate_avatar_pipeline.py` | Deterministic contract checks for import, preview, and export behavior. |
+| `validate_rgb_discovery_challenge.py` | Deterministic checks for the RGB challenge notebook and helper. |
 
 ## Contract
 
