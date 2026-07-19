@@ -19,6 +19,8 @@ from rgb_discovery_tools import (
     make_comparison_panel,
     open_rgb_image,
     prepare_submission_assets,
+    normalize_student_alias,
+    student_output_filename,
     rebuild_png_from_csv,
     resolve_source_image,
     write_rgb_csv,
@@ -60,15 +62,15 @@ def check_notebook_contract() -> None:
     notebook_text = json.dumps(notebook, ensure_ascii=False)
 
     _check("rgb_discovery_tools.py" in notebook_text, "Notebook should bootstrap the helper module.")
-    _check("rgb-discovery-output.csv" in notebook_text, "Notebook should name the exported CSV clearly.")
-    _check("rgb-discovery-revealed.png" in notebook_text, "Notebook should name the reconstructed PNG clearly.")
-    _check("top10-submission" in notebook_text, "Notebook should prepare a Top 10 submission folder.")
+    _check("student_alias" in notebook_text, "Notebook should ask for the student alias.")
+    _check("normalize_student_alias" in notebook_text, "Notebook should validate the alias format.")
+    _check("submissions" in notebook_text, "Notebook should prepare a submissions folder.")
     _check("Privacidad" in notebook_text, "Notebook should include a privacy note.")
     _check("Evidencia de logro" in notebook_text, "Notebook should explain the evidence of success.")
 
     _compile_notebook_code_cells(notebook)
 
-    for cell_id in ["bootstrap", "choose-image", "export-csv", "rebuild-png", "submission"]:
+    for cell_id in ["bootstrap", "choose-image", "student-alias", "export-csv", "rebuild-png", "submission"]:
         _check(cell_id in notebook_text, f"Notebook should include a '{cell_id}' code cell.")
 
 
@@ -78,19 +80,22 @@ def check_helper_round_trip() -> None:
 
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
+        student_alias = normalize_student_alias("har pir")
         sample = resolve_source_image(sample_image_path=SAMPLE_IMAGE_PATH)
         source_image = open_rgb_image(sample)
         study_image = fit_study_image(source_image, max_side=32)
 
-        csv_path = write_rgb_csv(study_image, temp_path / DEFAULT_OUTPUT_CSV)
+        csv_path = write_rgb_csv(study_image, temp_path / student_output_filename(student_alias, DEFAULT_OUTPUT_CSV))
         _check(csv_path.exists(), "CSV export was not created.")
+        _check(csv_path.name == f"{student_alias}-{DEFAULT_OUTPUT_CSV}", "CSV export should use the student alias convention.")
 
         rows = image_to_rgb_rows(study_image)
         _check(len(rows) == study_image.width * study_image.height, "Pixel rows count does not match the image size.")
         _check({"row", "col", "r", "g", "b", "hex"}.issubset(rows[0].keys()), "CSV rows should include RGB and hex values.")
 
-        png_path = rebuild_png_from_csv(csv_path, temp_path / DEFAULT_OUTPUT_PNG)
+        png_path = rebuild_png_from_csv(csv_path, temp_path / student_output_filename(student_alias, DEFAULT_OUTPUT_PNG))
         _check(png_path.exists(), "Reconstructed PNG was not created.")
+        _check(png_path.name == f"{student_alias}-{DEFAULT_OUTPUT_PNG}", "PNG export should use the student alias convention.")
 
         revealed = open_rgb_image(png_path)
         _check(revealed.size == study_image.size, "Reconstructed PNG size changed.")
@@ -98,14 +103,35 @@ def check_helper_round_trip() -> None:
         panel = make_comparison_panel(study_image, revealed)
         _check(panel.width > study_image.width, "Comparison panel should be wider than the source image.")
 
-        bundle = prepare_submission_assets(csv_path, png_path, temp_path / "top10-submission")
+        bundle = prepare_submission_assets(csv_path, png_path, temp_path / "submissions", student_alias)
         _check(Path(bundle["csv"]).exists(), "Submission CSV copy is missing.")
         _check(Path(bundle["png"]).exists(), "Submission PNG copy is missing.")
+        _check(Path(bundle["folder"]) == temp_path / "submissions" / student_alias, "Submission folder should use the student alias.")
+        _check(Path(bundle["csv"]).name == f"{student_alias}-{DEFAULT_OUTPUT_CSV}", "Submission CSV should keep the alias prefix.")
+        _check(Path(bundle["png"]).name == f"{student_alias}-{DEFAULT_OUTPUT_PNG}", "Submission PNG should keep the alias prefix.")
 
 
 def check_helper_validation_errors() -> None:
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
+
+        invalid_aliases = [
+            "",
+            "ABC",
+            "ABCDEFG",
+            "ABC!DE",
+            "ABC123",
+        ]
+        for invalid_alias in invalid_aliases:
+            try:
+                normalize_student_alias(invalid_alias)
+            except ValueError as exc:
+                _check(
+                    "6 letras" in str(exc) or "6 letters" in str(exc),
+                    f"Invalid alias '{invalid_alias}' should explain the 6-letter format.",
+                )
+            else:
+                raise AssertionError(f"Invalid alias '{invalid_alias}' should not validate successfully.")
 
         negative_coords_csv = temp_path / "negative-coords.csv"
         negative_coords_csv.write_text(

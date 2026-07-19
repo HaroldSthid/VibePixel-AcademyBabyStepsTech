@@ -1,10 +1,10 @@
 # Plantilla de entrega individual
 
-Copiá este texto en tu **propuesta de entrega/cambio**. Si la clase habilitó la carpeta de entregas, también podés pegarlo en `submissions/<alias-o-nombre>/README.md`.
+Copiá este texto en tu **propuesta de entrega/cambio**. Si la clase habilitó la carpeta de entregas, también podés pegarlo en `submissions/<ALIAS>/README.md`.
 
 ## 1. Datos generales
 
-- **Nombre o alias**:
+- **Nombre o alias**: si usás alias, seguí la regla de 6 letras en mayúsculas: las 3 primeras letras de tu primer nombre + las 3 primeras letras de tu primer apellido.
 - **Curso o grupo**:
 - **Fecha**:
 
@@ -54,10 +54,10 @@ Usá esta estructura:
 
 ```text
 submissions/
-  <alias-o-nombre>/
+  <ALIAS>/
     README.md
-    rgb-discovery.csv
-    rgb-discovery-preview.png
+    <ALIAS>-rgb-discovery-output.csv
+    <ALIAS>-rgb-discovery-revealed.png
 ```
 
 La carpeta solo se usa cuando el facilitador la activa. Si no está activada, seguí con la propuesta de entrega/cambio y dejá ahí tus enlaces o adjuntos.

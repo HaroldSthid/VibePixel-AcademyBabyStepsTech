@@ -33,4 +33,4 @@ El archivo `Imagen Final.xlsx` se usa solo como fuente local. No se publica.
 
 ## Entrega pensada para Top 10
 
-Si querés preparar tu propuesta de entrega/cambio, abrí primero la guía web de [`submissions`](../../submissions.html). Ahí está la ruta clara, la plantilla y los cuidados de privacidad.
+Si querés preparar tu propuesta de entrega/cambio, abrí primero la guía web de [`submissions`](../../submissions.html). Ahí está la ruta clara, la plantilla, el alias de 6 letras en mayúsculas derivado como las 3 primeras letras de tu primer nombre + las 3 primeras letras de tu primer apellido, y los cuidados de privacidad.

@@ -6,8 +6,8 @@ Usá esta carpeta para el flujo de Colab del avatar y para el nuevo Colab paso a
 
 1. Abrí `vibepixel_avatar_pipeline.ipynb` para el flujo del avatar o `rgb_discovery_challenge.ipynb` para el desafío RGB paso a paso.
 2. En la notebook RGB, dejá la imagen de ejemplo si querés una primera corrida automática; después podés cambiar la variable por tu JPG/PNG.
-3. Usá los nombres de salida claros (`rgb-discovery-output.csv` y `rgb-discovery-revealed.png`) para compartir la evidencia sin confundir archivos.
-4. Copiá los resultados a la carpeta de entrega que uses en tu clase o propuesta.
+3. Usá tu alias de 6 letras en mayúsculas, derivado como las 3 primeras letras de tu primer nombre + las 3 primeras letras de tu primer apellido, para nombrar los archivos (`HARPIR-rgb-discovery-output.csv` y `HARPIR-rgb-discovery-revealed.png` como ejemplo).
+4. Copiá los resultados a `submissions/<ALIAS>/` o a la carpeta de entrega que use tu clase.
 
 ## Si algo falla
 

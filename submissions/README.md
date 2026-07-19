@@ -4,23 +4,27 @@ Abrí primero [`submissions.html`](../submissions.html). Esa es la puerta amable
 
 Podés conversar con otras personas, comparar ideas y pedir ayuda. Pero tu entrega es tuya: cada estudiante muestra su propia evidencia y su propia explicación.
 
+## Tu alias
+
+Usá 6 letras en mayúsculas: las 3 primeras de tu nombre + las 3 primeras de tu apellido. Si te llamás Harold Piravaguen, tu alias es `HARPIR`.
+
 ## Ruta corta
 
 1. Resolvé el desafío RGB.
 2. Juntá tu CSV, tu PNG y una reflexión breve.
 3. Elegí el camino que te toque:
    - **Propuesta de entrega/cambio (PR)**: pegá la reflexión en el cuerpo de la PR y adjuntá o enlazá el CSV y el PNG.
-   - **Carpeta habilitada por el facilitador**: copiá esta guía a `submissions/<alias-o-nombre>/README.md` y guardá ahí el CSV y el PNG.
+   - **Carpeta habilitada por el facilitador**: copiá esta guía a `submissions/<ALIAS>/README.md` y guardá ahí el CSV y el PNG.
 4. Decí qué querés que revisen primero.
 
 ## Qué va en cada lugar
 
 | Elemento | Dónde va |
 |---|---|
-| CSV | En la PR o en `submissions/<alias-o-nombre>/rgb-discovery.csv` si la carpeta está habilitada. |
-| PNG | En la PR o en `submissions/<alias-o-nombre>/rgb-discovery-preview.png` si la carpeta está habilitada. |
-| Reflexión | En el cuerpo de la PR, o también en `submissions/<alias-o-nombre>/README.md` si usás la carpeta. |
-| Nombre o alias | En la PR y, si existe la carpeta, dentro de `submissions/<alias-o-nombre>/`. |
+| CSV | En la PR o en `submissions/<ALIAS>/<ALIAS>-rgb-discovery-output.csv` si la carpeta está habilitada. |
+| PNG | En la PR o en `submissions/<ALIAS>/<ALIAS>-rgb-discovery-revealed.png` si la carpeta está habilitada. |
+| Reflexión | En el cuerpo de la PR, o también en `submissions/<ALIAS>/README.md` si usás la carpeta. |
+| Nombre o alias | En la PR y, si existe la carpeta, dentro de `submissions/<ALIAS>/`. |
 
 ## Criterios del Top 10
 

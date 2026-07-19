@@ -8,10 +8,12 @@ Explicá en pocas líneas qué hiciste y para qué sirve.
 
 ## Dónde está la evidencia
 
-- [ ] CSV adjunto, enlazado o guardado en `submissions/<alias-o-nombre>/rgb-discovery.csv`
-- [ ] PNG adjunto, enlazado o guardado en `submissions/<alias-o-nombre>/rgb-discovery-preview.png`
-- [ ] Reflexión breve incluida en esta PR o en `submissions/<alias-o-nombre>/README.md`
+- [ ] CSV adjunto, enlazado o guardado en `submissions/<ALIAS>/<ALIAS>-rgb-discovery-output.csv`
+- [ ] PNG adjunto, enlazado o guardado en `submissions/<ALIAS>/<ALIAS>-rgb-discovery-revealed.png`
+- [ ] Reflexión breve incluida en esta PR o en `submissions/<ALIAS>/README.md`
 - [ ] Nombre o alias incluido
+
+Si usás alias, derivalo en mayúsculas con las 3 primeras letras de tu primer nombre + las 3 primeras letras de tu primer apellido (ejemplo: `HARPIR`).
 
 ## Qué aprendí
 
@@ -33,4 +35,4 @@ Decime qué te gustaría que se mire primero.
 
 ## Si el facilitador habilitó la carpeta de entregas
 
-Usá `submissions/<alias-o-nombre>/README.md` como ancla y dejá ahí tu evidencia.
+Usá `submissions/<ALIAS>/README.md` como ancla y dejá ahí tu evidencia. Si necesitás un ejemplo, `HARPIR` sirve como referencia.

@@ -11,6 +11,7 @@ The helpers keep the notebook small while still letting learners:
 from __future__ import annotations
 
 import csv
+import re
 import shutil
 import urllib.request
 from pathlib import Path
@@ -51,6 +52,31 @@ def _require_pillow() -> None:
         raise RGBDiscoveryError(
             "Pillow is required. Install it in Colab with `pip install pillow`."
         )
+
+
+def normalize_student_alias(student_alias: str | Path) -> str:
+    """Normalize and validate the student alias used for delivery files."""
+
+    alias = "".join(str(student_alias).split()).upper()
+    if not alias:
+        raise RGBDiscoveryError(
+            "Necesitamos tu alias de entrega. Usá 6 letras en mayúsculas, por ejemplo HARPIR."
+        )
+
+    if not re.fullmatch(r"[A-Z]{6}", alias):
+        raise RGBDiscoveryError(
+            "Tu alias debe tener exactamente 6 letras A-Z, sin espacios ni símbolos. "
+            "Ejemplo: HARPIR."
+        )
+
+    return alias
+
+
+def student_output_filename(student_alias: str | Path, base_filename: str) -> str:
+    """Build an alias-prefixed filename for the submission assets."""
+
+    alias = normalize_student_alias(student_alias)
+    return f"{alias}-{base_filename}"
 
 
 def download_sample_image(destination: str | Path, *, timeout: int = DEFAULT_DOWNLOAD_TIMEOUT) -> Path:
@@ -249,14 +275,16 @@ def prepare_submission_assets(
     csv_path: str | Path,
     png_path: str | Path,
     output_dir: str | Path,
+    student_alias: str | Path,
 ) -> dict[str, str]:
     """Copy the final files into a shareable Top 10 submission folder."""
 
-    destination = Path(output_dir)
+    alias = normalize_student_alias(student_alias)
+    destination = Path(output_dir) / alias
     destination.mkdir(parents=True, exist_ok=True)
 
-    csv_target = destination / DEFAULT_OUTPUT_CSV
-    png_target = destination / DEFAULT_OUTPUT_PNG
+    csv_target = destination / student_output_filename(alias, DEFAULT_OUTPUT_CSV)
+    png_target = destination / student_output_filename(alias, DEFAULT_OUTPUT_PNG)
     shutil.copy2(csv_path, csv_target)
     shutil.copy2(png_path, png_target)
 
