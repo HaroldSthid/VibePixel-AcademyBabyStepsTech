@@ -382,14 +382,15 @@
         <section class="hero">
           <span class="eyebrow">Academia guiada para crear y compartir</span>
           <h1>Empezá por la guía, no por el repo.</h1>
-          <p class="lead">
-            Esta experiencia acompaña a estudiantes no técnicos a convertir una idea visual en algo que pueden tocar, cambiar y compartir. Primero siguen una ruta clara, después prueban en Colab y finalmente llevan su avatar a CodePen.
-          </p>
+            <p class="lead">
+              Esta experiencia acompaña a estudiantes no técnicos a convertir una idea visual en algo que pueden tocar, cambiar y compartir. Primero descubren cómo los datos se vuelven imagen, después siguen una ruta clara y finalmente llevan su avatar a Colab y CodePen.
+            </p>
           <p class="lead">
             La idea es simple: mostrar qué hacer, qué debería verse y qué cuenta como logro en cada paso.
           </p>
           <div class="actions">
             <a class="button primary" href="onboarding.html">Abrir onboarding</a>
+            <a class="button secondary" href="artifacts/rgb-discovery/rgb-discovery.html">Abrir desafío RGB</a>
             <a class="button secondary" href="colab-onboarding.html">Ir a Colab</a>
             <a class="button secondary" href="codepen-onboarding.html">Ir a CodePen</a>
           </div>
@@ -398,13 +399,17 @@
         <section class="section grid cards" aria-labelledby="start-title">
           <article class="card wide soft">
             <h2 id="start-title" class="section-title">Dónde empezar</h2>
-            <p class="meta">
-              Si no sabes qué abrir primero, usa la página de onboarding. Está escrita para la primera visita: explica el camino completo y muestra el resultado esperado en cada etapa.
+              <p class="meta">
+              Si no sabes qué abrir primero, usa la página de onboarding. Está escrita para la primera visita: primero muestra el desafío RGB para descubrir la imagen oculta, después sigue con el resto del recorrido y el resultado esperado en cada etapa.
             </p>
           </article>
           <article class="card soft">
+            <h3>Desafío RGB</h3>
+            <p class="meta">CSV → imagen → comparación. Primero descubrís el patrón, después dibujás el avatar y seguís con Colab.</p>
+          </article>
+          <article class="card soft">
             <h3>Ruta rápida</h3>
-            <p class="meta">Onboarding → Colab → CodePen</p>
+            <p class="meta">Onboarding → Desafío RGB → Colab → CodePen</p>
           </article>
           <article class="card soft">
             <h3>Rol de GitHub</h3>
@@ -415,8 +420,8 @@
         <section class="section grid cards" aria-labelledby="que-es">
           <article class="card wide">
             <h2 id="que-es" class="section-title">Qué es este proyecto</h2>
-            <p class="meta">
-              Un kit público para que una clase construya avatares simples y entienda el recorrido completo: del boceto a los datos, de los datos a una imagen animada, y de esa imagen a un espacio web editable.
+              <p class="meta">
+              Un kit público para que una clase construya avatares simples y entienda el recorrido completo: de los datos al boceto, del boceto a una imagen animada, y de esa imagen a un espacio web editable.
             </p>
           </article>
           <article class="card soft">
@@ -440,33 +445,40 @@
               <div class="step">
                 <div class="step-number">1</div>
                 <div>
-                  <h3>Dibujá el avatar</h3>
-                  <p class="meta">Usá la planilla como cuadrícula: cada celda es una decisión visual y cada color empieza a ser dato.</p>
+                  <h3>Resolvé el desafío RGB</h3>
+                  <p class="meta">Abrí el CSV y mirá la vista previa PNG para descubrir cómo la planilla se transforma en imagen. El éxito es reconocer el patrón de colores antes de dibujar el avatar.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-number">2</div>
                 <div>
-                  <h3>Probá el boceto en Colab</h3>
-              <p class="meta">Colab funciona como laboratorio: valida colores, muestra el resultado y exporta el avatar como imagen o GIF. El éxito es ver la vista previa y el archivo de salida.</p>
+                  <h3>Dibujá el avatar</h3>
+                  <p class="meta">Usá la planilla como cuadrícula: cada celda es una decisión visual y cada color empieza a ser dato.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-number">3</div>
+                <div>
+                  <h3>Probá el boceto en Colab</h3>
+                  <p class="meta">Colab funciona como laboratorio: valida colores, muestra el resultado y exporta el avatar como imagen o GIF. El éxito es ver la vista previa y el archivo de salida.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
                 <div>
                   <h3>Llevalo a CodePen</h3>
               <p class="meta">Pegá HTML, CSS y JS en paneles separados para ver cómo el avatar entra a un espacio web editable. El éxito es que cada panel quede claro y el preview cargue la imagen pública.</p>
                 </div>
               </div>
               <div class="step">
-                <div class="step-number">4</div>
+                <div class="step-number">5</div>
                 <div>
                   <h3>Personalizá el taller</h3>
                   <p class="meta">Cambiá textos, colores, accesorios e interacciones pequeñas. La meta es comprender, no llenar de funciones.</p>
                 </div>
               </div>
               <div class="step">
-                <div class="step-number">5</div>
+                <div class="step-number">6</div>
                 <div>
                   <h3>Compartí y reflexioná</h3>
                   <p class="meta">Mostrá qué cambiaste, qué aprendiste y qué pregunta te gustaría abrir con otros avatares en una próxima fase.</p>

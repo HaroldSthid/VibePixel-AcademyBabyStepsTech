@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Onboarding | VibePixel Academy BabyStepsTech</title>
+    <title>Desafío RGB | VibePixel Academy BabyStepsTech</title>
     <meta
       name="description"
-      content="Ruta guiada para estudiantes no técnicos: qué abrir, qué hacer y qué evidencia de logro buscar en cada paso."
+      content="Página amigable para descubrir cómo una planilla CSV se convierte en una imagen antes de seguir con la creación del avatar."
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
@@ -41,6 +41,7 @@
       a { color: var(--brand); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
       a:hover { text-decoration-thickness: 2px; }
       a:focus-visible, .button:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+      img { max-width: 100%; display: block; }
       .shell { max-width: var(--max); margin: 0 auto; padding: 24px; }
       .topbar, .footer { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
       .topbar { margin-bottom: 28px; }
@@ -85,6 +86,14 @@
       .step:nth-child(3n + 2) { border-left-color: var(--accent-green); }
       .step:nth-child(3n) { border-left-color: var(--accent-amber); }
       .step-number { display: grid; width: 56px; height: 56px; place-items: center; border-radius: 8px; background: var(--brand-soft); color: var(--brand); font-size: 1.2rem; font-weight: 800; }
+      .figure { display: grid; gap: 12px; }
+      .preview {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px;
+        background: #fff;
+      }
+      .preview figcaption { margin-top: 10px; color: var(--muted); font-size: .9rem; }
       .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
       .pill { padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; }
       .pill:nth-child(3n + 1) { border-left-color: var(--accent-red); }
@@ -108,119 +117,124 @@
       <header class="topbar">
         <div class="brand">VibePixel Academy BabyStepsTech</div>
         <nav class="nav" aria-label="Navegación principal">
-          <a href="index.html">Inicio</a>
-          <a href="colab-onboarding.html">Colab</a>
-          <a href="codepen-onboarding.html">CodePen</a>
-          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Referencia en GitHub</a>
+          <a href="../../index.html">Inicio</a>
+          <a href="../../onboarding.html">Onboarding</a>
+          <a href="rgb-discovery.csv">CSV</a>
+          <a href="rgb-discovery-preview.png">PNG</a>
+          <a href="README.md">README</a>
         </nav>
       </header>
 
       <main>
         <section class="hero">
-          <p class="eyebrow">Onboarding para empezar sin miedo</p>
-          <h1>Primero la ruta, después las herramientas.</h1>
+          <p class="eyebrow">Desafío RGB para aprender con evidencia</p>
+          <h1>Primero descubrí la imagen, después dibujá el avatar.</h1>
           <p class="lead">
-            Esta página está pensada para la primera visita. Te dice qué abrir, qué hacer y cómo reconocer que cada etapa salió bien.
+            Esta página te ayuda a ver que una planilla puede esconder una imagen. Mirá el CSV, comparalo con la vista previa y fijate cuándo los colores empiezan a contar una historia.
           </p>
           <div class="actions">
-            <a class="button primary" href="#ruta">Ver ruta completa</a>
-            <a class="button secondary" href="artifacts/rgb-discovery/rgb-discovery.html">Desafío RGB</a>
-            <a class="button secondary" href="colab-onboarding.html">Ir a Colab</a>
-            <a class="button secondary" href="codepen-onboarding.html">Ir a CodePen</a>
+            <a class="button primary" href="#ruta">Ver la ruta</a>
+            <a class="button secondary" href="rgb-discovery.csv">Abrir el CSV</a>
+            <a class="button secondary" href="rgb-discovery-preview.png">Ver el PNG</a>
+            <a class="button secondary" href="../../onboarding.html">Volver al onboarding</a>
           </div>
         </section>
 
         <section class="section grid cards" aria-labelledby="quick-title">
           <article class="card wide soft">
-            <h2 id="quick-title" class="section-title">Resumen rápido</h2>
+            <h2 id="quick-title" class="section-title">Qué vas a descubrir</h2>
             <p class="meta">
-              El camino ideal es simple: entender la idea, descubrir los colores en el desafío RGB, probar en Colab, pasar a CodePen y compartir el resultado.
+              El patrón aparece cuando comparás los números del CSV con la imagen PNG. Ese hallazgo es el puente entre "datos" y "imagen" antes de empezar a crear el avatar.
             </p>
           </article>
           <article class="card soft">
-            <h3>Resultado visible</h3>
-            <p class="meta">En cada etapa hay una evidencia concreta que te dice “ya está listo para avanzar”.</p>
+            <h3>Señal de logro</h3>
+            <p class="meta">Podés explicar por qué la planilla ya estaba dibujando la imagen.</p>
           </article>
           <article class="card soft">
-            <h3>Regla de oro</h3>
-            <p class="meta">Si todavía no ves el resultado esperado, no saltes al siguiente paso.</p>
+            <h3>Siguiente paso</h3>
+            <p class="meta">Después del descubrimiento, seguí con el onboarding y recién ahí pasá a la creación del avatar.</p>
           </article>
         </section>
 
         <section id="ruta" class="section grid cards" aria-labelledby="ruta-title">
           <article class="card full">
-            <h2 id="ruta-title" class="section-title">Ruta guiada</h2>
+            <h2 id="ruta-title" class="section-title">Ruta rápida</h2>
             <div class="timeline">
               <div class="step">
                 <div class="step-number">1</div>
                 <div>
-                  <h3>Abrí la guía del estudiante</h3>
-                  <p class="meta">Usala como mapa. No necesitás entender todo al principio; solo ubicar dónde empieza el recorrido.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> ves la ruta completa y sabes que no hace falta entrar al repositorio para arrancar.</p>
+                  <h3>Abrí el CSV</h3>
+                  <p class="meta">Mirá la grilla de colores como texto. No hace falta entender todo de golpe; alcanza con notar que hay un patrón.</p>
+                  <p class="meta"><strong>Evidencia de éxito:</strong> ves una estructura repetida y reconocés filas y columnas.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-number">2</div>
                 <div>
-                  <h3>Resolvé el desafío RGB</h3>
-                  <p class="meta">Abrí el CSV, buscá el patrón de colores y comparalo con la vista previa PNG. La idea es descubrir que los números y las celdas estaban armando una imagen.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> reconocés la imagen escondida y podés explicar cómo pasó de datos a color.</p>
+                  <h3>Comparalo con el PNG</h3>
+                  <p class="meta">Abrí la vista previa y buscá la misma composición. La comparación te muestra cómo los datos se convierten en imagen.</p>
+                  <p class="meta"><strong>Evidencia de éxito:</strong> encontrás la misma imagen en ambos archivos.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-number">3</div>
                 <div>
-                  <h3>Probalo en Colab</h3>
-                  <p class="meta">Colab sirve para revisar, corregir y exportar. Acá no se “programa por programar”: se valida el material.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> aparece una vista previa del avatar y se genera una imagen o GIF descargable.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-number">4</div>
-                <div>
-                  <h3>Llevá el resultado a CodePen</h3>
-                  <p class="meta">CodePen es el taller web. Cada panel tiene una tarea distinta y eso ayuda a no mezclar todo.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> el preview muestra el avatar y los paneles quedan ordenados por HTML, CSS y JS.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-number">5</div>
-                <div>
-                  <h3>Revisá y compartí</h3>
-                  <p class="meta">Contá qué cambiaste, qué aprendiste y qué te gustaría mejorar después. La explicación también forma parte del aprendizaje.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> podés mostrar el resultado y explicar qué parte cambió y por qué.</p>
+                  <h3>Explicá el descubrimiento</h3>
+                  <p class="meta">Contá con tus palabras qué cambió entre ver datos y ver una imagen. Esa explicación prepara el paso hacia el avatar.</p>
+                  <p class="meta"><strong>Evidencia de éxito:</strong> podés decir que la planilla estaba representando colores.</p>
                 </div>
               </div>
             </div>
           </article>
         </section>
 
-        <section class="section grid cards" aria-labelledby="success-title">
+        <section class="section grid cards" aria-labelledby="evidence-title">
           <article class="card wide soft">
-            <h2 id="success-title" class="section-title">Qué significa “funciona”</h2>
-            <ul class="list">
-              <li>La persona no técnica puede seguir la ruta sin preguntar dónde empezar.</li>
-              <li>Cada etapa tiene un resultado visible que confirma el avance.</li>
-              <li>GitHub queda como referencia secundaria, no como la primera puerta.</li>
-              <li>El camino evita exceso de texto y evita mostrar código innecesario al inicio.</li>
-            </ul>
+            <h2 id="evidence-title" class="section-title">Evidencia visible</h2>
+            <div class="grid" style="grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px;">
+              <div>
+                <h3>CSV</h3>
+                <p class="meta"><a href="rgb-discovery.csv">Descargar o abrir la planilla</a> para revisar el patrón de colores.</p>
+              </div>
+              <div>
+                <h3>PNG</h3>
+                <p class="meta"><a href="rgb-discovery-preview.png">Abrir la vista previa</a> para ver la imagen final del mismo material.</p>
+              </div>
+            </div>
           </article>
           <article class="card wide">
+            <figure class="preview figure">
+              <img src="rgb-discovery-preview.png" alt="Vista previa de la imagen RGB descubierta" />
+              <figcaption>La imagen esperada aparece acá. Si la reconocés, ya entendiste el puente entre datos y color.</figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="check-title">
+          <article class="card wide">
+            <h2 id="check-title" class="section-title">Checklist de salida</h2>
+            <ul class="list">
+              <li>Abriste el CSV sin miedo.</li>
+              <li>Comparaste la grilla con el PNG.</li>
+              <li>Entendiste que los colores ya estaban escondidos en los datos.</li>
+              <li>Estás listo para seguir con el onboarding y recién después crear el avatar.</li>
+            </ul>
+          </article>
+          <article class="card wide soft">
             <h2 class="section-title">Siguiente paso claro</h2>
             <div class="pill-row">
-               <span class="pill"><a href="artifacts/rgb-discovery/rgb-discovery.html">Abrir desafío RGB</a></span>
-              <span class="pill"><a href="colab-onboarding.html">Abrir Colab</a></span>
-              <span class="pill"><a href="codepen-onboarding.html">Abrir CodePen</a></span>
-              <span class="pill"><a href="index.html">Volver al inicio</a></span>
-              <span class="pill"><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Referencia GitHub</a></span>
+              <span class="pill"><a href="../../onboarding.html">Volver al onboarding</a></span>
+              <span class="pill"><a href="../../index.html">Ir al inicio</a></span>
+              <span class="pill"><a href="README.md">Leer la referencia</a></span>
             </div>
           </article>
         </section>
       </main>
 
       <footer class="footer">
-        <span>Empieza por aquí cuando no quieras pelearte con el repositorio.</span>
-        <span><a href="index.html">Volver al inicio</a></span>
+        <span>Diseñado para que el descubrimiento sea visible antes de tocar el avatar.</span>
+        <span><a href="../../onboarding.html">Continuar con la ruta guiada</a></span>
       </footer>
     </div>
   </body>
