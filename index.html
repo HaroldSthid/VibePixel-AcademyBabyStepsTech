@@ -1,152 +1,521 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>VibePixel Academy BabyStepsTech</title>
+    <meta
+      name="description"
+      content="Una experiencia guiada para crear avatares, contar historias y conectar ideas usando planillas, Colab y CodePen."
+    />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
+
       :root {
         color-scheme: light;
-        --bg: #f7f8fc;
-        --panel: #ffffff;
-        --text: #14243b;
-        --muted: #56677e;
-        --accent: #4a63ff;
-        --line: #d9deea;
+        --bg: #f4f2eb;
+        --surface: #fbfaf6;
+        --surface-alt: #efebe2;
+        --text: #171717;
+        --muted: #5f5a52;
+        --brand: #171717;
+        --brand-soft: #e4e0d7;
+        --border: #d6d0c4;
+        --accent-red: #c84949;
+        --accent-green: #2f7d55;
+        --accent-amber: #a66b2e;
+        --shadow: 0 10px 24px rgba(17, 17, 17, 0.06);
+        --radius: 8px;
+        --max: 1080px;
       }
 
       * {
         box-sizing: border-box;
       }
 
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: var(--text);
-        background: radial-gradient(circle at top left, #eef2ff 0, var(--bg) 38%, #ffffff 100%);
+      html {
+        scroll-behavior: smooth;
       }
 
-      main {
-        width: min(1040px, calc(100% - 32px));
+      body {
+        margin: 0;
+        font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        color: var(--text);
+        line-height: 1.6;
+        background: linear-gradient(180deg, #f5f3ed 0%, #eeebe3 100%);
+      }
+
+      a {
+        color: var(--brand);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+
+      a:focus-visible,
+      .button:focus-visible {
+        outline: 2px solid var(--brand);
+        outline-offset: 3px;
+      }
+
+      .shell {
+        max-width: var(--max);
         margin: 0 auto;
-        padding: 48px 0;
+        padding: 24px;
+      }
+
+      .topbar,
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .topbar {
+        margin-bottom: 28px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .nav a,
+      .button,
+      .footer a {
+        text-decoration: none;
+      }
+
+      .nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 8px 12px;
+        border: 1px solid var(--brand);
+        border-radius: 6px;
+        background: var(--brand);
+        color: var(--surface);
+        font-size: 0.88rem;
+        font-weight: 700;
+        transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        background: #000;
+        color: #fff;
+        text-decoration: none;
+        transform: translateY(-1px);
       }
 
       .hero,
       .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        box-shadow: 0 20px 60px rgba(20, 36, 59, 0.08);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-top: 4px solid var(--brand);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
       }
 
       .hero {
-        padding: clamp(28px, 6vw, 56px);
+        padding: 36px;
       }
 
       .eyebrow {
-        margin: 0 0 12px;
-        color: var(--accent);
-        font-size: 0.82rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        padding: 6px 12px;
+        border-radius: 6px;
+        background: var(--brand-soft);
+        color: var(--brand);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 14px;
+        line-height: 1.15;
       }
 
       h1 {
-        max-width: 760px;
-        margin: 0;
-        font-size: clamp(2.2rem, 6vw, 4.8rem);
-        line-height: 0.95;
+        max-width: 13ch;
+        margin-top: 16px;
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        letter-spacing: -0.04em;
       }
 
-      .lede {
-        max-width: 720px;
-        margin: 24px 0 0;
+      .lead {
+        max-width: 72ch;
         color: var(--muted);
-        font-size: 1.15rem;
-        line-height: 1.7;
+        font-size: 1.1rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        font-weight: 700;
+      }
+
+      .button.primary {
+        background: var(--brand);
+        color: var(--surface);
+      }
+
+      .button.secondary {
+        border-color: var(--border);
+        color: var(--text);
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        text-decoration: none;
+      }
+
+      .section {
+        margin-top: 24px;
       }
 
       .grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: 18px;
-        margin-top: 24px;
+      }
+
+      .grid.cards {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
       }
 
       .card {
-        padding: 24px;
+        grid-column: span 4;
+        padding: 22px;
       }
 
-      .card h2 {
-        margin: 0 0 10px;
+      .card:nth-of-type(3n + 1) {
+        border-top-color: var(--accent-red);
+      }
+
+      .card:nth-of-type(3n + 2) {
+        border-top-color: var(--accent-green);
+      }
+
+      .card:nth-of-type(3n) {
+        border-top-color: var(--accent-amber);
+      }
+
+      .card.wide {
+        grid-column: span 6;
+      }
+
+      .card.full {
+        grid-column: 1 / -1;
+      }
+
+      .card.soft {
+        background: var(--surface-alt);
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .list li + li {
+        margin-top: 8px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+        align-items: start;
+        padding: 18px;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--brand);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+
+      .step:nth-child(3n + 1) {
+        border-left-color: var(--accent-red);
+      }
+
+      .step:nth-child(3n + 2) {
+        border-left-color: var(--accent-green);
+      }
+
+      .step:nth-child(3n) {
+        border-left-color: var(--accent-amber);
+      }
+
+      .step-number {
+        display: grid;
+        width: 56px;
+        height: 56px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--brand-soft);
+        color: var(--brand);
         font-size: 1.2rem;
+        font-weight: 800;
       }
 
-      .card p {
-        margin: 0 0 18px;
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        padding: 7px 12px;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--brand);
+        border-radius: 6px;
+        background: var(--surface);
         color: var(--muted);
-        line-height: 1.6;
+        font-size: 0.92rem;
       }
 
-      a {
-        color: var(--accent);
-        font-weight: 700;
-        text-decoration: none;
+      .pill:nth-child(3n + 1) {
+        border-left-color: var(--accent-red);
       }
 
-      a:hover {
-        text-decoration: underline;
+      .pill:nth-child(3n + 2) {
+        border-left-color: var(--accent-green);
       }
 
-      .path {
-        margin-top: 24px;
-        padding: 18px 20px;
-        border: 1px dashed #b9c3ff;
-        border-radius: 18px;
+      .pill:nth-child(3n) {
+        border-left-color: var(--accent-amber);
+      }
+
+      .footer {
+        margin: 30px 0 10px;
         color: var(--muted);
-        background: #f2f5ff;
-        font-weight: 700;
+        font-size: 0.95rem;
       }
 
-      @media (max-width: 780px) {
-        .grid {
+      @media (max-width: 860px) {
+        .card,
+        .card.wide {
+          grid-column: 1 / -1;
+        }
+
+        .topbar,
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .hero {
+          padding: 24px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .shell {
+          padding: 16px;
+        }
+
+        .step {
           grid-template-columns: 1fr;
+        }
+
+        .step-number {
+          width: 48px;
+          height: 48px;
         }
       }
     </style>
   </head>
   <body>
-    <main>
-      <section class="hero">
-        <p class="eyebrow">VibePixel Academy</p>
-        <h1>Build an avatar learning kit across Spreadsheet, Colab, and CodePen.</h1>
-        <p class="lede">
-          This public page is the stable GitHub Pages entry point for the BabyStepsTech kit. Use it to teach the visible workflow: data in a spreadsheet, transformation in Python, and customization in HTML, CSS, and JavaScript.
-        </p>
-        <div class="path">Spreadsheet -> Colab/Python -> exported GIF URL -> CodePen workshop</div>
-      </section>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VibePixel Academy BabyStepsTech</div>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="#ruta">Ruta</a>
+          <a href="#talleres">Talleres</a>
+          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech">GitHub</a>
+          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Guía estudiante</a>
+        </nav>
+      </header>
 
-      <section class="grid" aria-label="Learning artifact links">
-        <article class="card">
-          <h2>Start as a learner</h2>
-          <p>Follow the classroom-safe path from avatar grid to CodePen workshop.</p>
-          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Open learner flow</a>
-        </article>
+      <main>
+        <section class="hero">
+          <span class="eyebrow">Academia guiada para crear y compartir</span>
+          <h1>Tu avatar como primer mundo de conocimiento.</h1>
+          <p class="lead">
+            Esta experiencia acompaña a estudiantes no técnicos a convertir una idea visual en algo que pueden tocar, cambiar y compartir: primero dibujan en una planilla, después prueban en Colab, y finalmente llevan su avatar a un taller en CodePen.
+          </p>
+          <p class="lead">
+            No se trata de “hacer un videojuego”. Se trata de aprender cómo una idea viaja entre herramientas, cómo se transforma en datos y cómo puede abrir conversaciones con otras áreas de conocimiento.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#ruta">Ver ruta sugerida</a>
+            <a class="button secondary" href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Abrir guía del estudiante</a>
+            <a class="button secondary" href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech">Ver repo</a>
+          </div>
+        </section>
 
-        <article class="card">
-          <h2>Facilitate as a teacher</h2>
-          <p>Review scope, non-goals, and what good looks like for the MVP.</p>
-          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/teacher-flow.md">Open teacher flow</a>
-        </article>
+        <section class="section grid cards" aria-labelledby="que-es">
+          <article class="card wide">
+            <h2 id="que-es" class="section-title">Qué es este proyecto</h2>
+            <p class="meta">
+              Un kit público para que una clase construya avatares simples y entienda el recorrido completo: del boceto a los datos, de los datos a una imagen animada, y de esa imagen a un espacio web editable.
+            </p>
+          </article>
+          <article class="card soft">
+            <h3>Para quién es</h3>
+            <p class="meta">Estudiantes que están empezando y docentes que quieren enseñar tecnología con pasos visibles, no con cajas negras.</p>
+          </article>
+          <article class="card soft">
+            <h3>Qué se crea</h3>
+            <p class="meta">Un avatar, una pequeña historia visual y un taller web donde se pueden probar accesorios, textos e interacciones.</p>
+          </article>
+          <article class="card soft">
+            <h3>Qué se aprende</h3>
+            <p class="meta">Color, datos, validación, Python, HTML, CSS, JavaScript y, sobre todo, cómo conectar herramientas con intención.</p>
+          </article>
+        </section>
 
-        <article class="card">
-          <h2>Verify the kit</h2>
-          <p>Use deterministic checks plus the manual CodePen import checklist.</p>
-          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/verification-checklist.md">Open verification checklist</a>
-        </article>
-      </section>
-    </main>
+        <section id="ruta" class="section grid cards" aria-labelledby="ruta-title">
+          <article class="card full">
+            <h2 id="ruta-title" class="section-title">Ruta sugerida</h2>
+            <div class="timeline">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                  <h3>Dibujá el avatar</h3>
+                  <p class="meta">Usá la planilla como cuadrícula: cada celda es una decisión visual y cada color empieza a ser dato.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                  <h3>Probá el boceto en Colab</h3>
+                  <p class="meta">Colab funciona como laboratorio: valida colores, muestra el resultado y exporta el avatar como imagen o GIF.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                  <h3>Llevalo a CodePen</h3>
+                  <p class="meta">Pegá HTML, CSS y JS en paneles separados para ver cómo el avatar entra a un espacio web editable.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                  <h3>Personalizá el taller</h3>
+                  <p class="meta">Cambiá textos, colores, accesorios e interacciones pequeñas. La meta es comprender, no llenar de funciones.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                  <h3>Compartí y reflexioná</h3>
+                  <p class="meta">Mostrá qué cambiaste, qué aprendiste y qué pregunta te gustaría abrir con otros avatares en una próxima fase.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section id="talleres" class="section grid cards" aria-labelledby="talleres-title">
+          <article class="card full soft">
+            <h2 id="talleres-title" class="section-title">Los tres talleres</h2>
+            <ul class="list">
+              <li><strong>Planilla:</strong> es el cuaderno visual. Sirve para pensar el avatar como mapa, con colores Hex/RGB como se usan en proyectos reales.</li>
+              <li><strong>Colab:</strong> es el laboratorio. Sirve para ensayar, equivocarse con seguridad y transformar datos en una imagen que se puede compartir.</li>
+              <li><strong>CodePen:</strong> es la mesa de armado web. Sirve para convertir el avatar en un pequeño espacio editable donde estructura, estilo y comportamiento se ven por separado.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="vision-title">
+          <article class="card wide">
+            <h2 id="vision-title" class="section-title">La historia que queremos abrir</h2>
+            <p class="meta">
+              Hoy empieza con un avatar individual. Más adelante, esos avatares pueden encontrarse en espacios colectivos: recorridos, preguntas para avanzar, retos pequeños o actividades entre materias. La base sigue siendo la misma: crear, explicar, compartir y mejorar.
+            </p>
+          </article>
+          <article class="card wide soft">
+            <h2 class="section-title">Primer paso real</h2>
+            <p class="meta">
+              Si estás empezando, no saltes directo al código. Abrí la ruta del estudiante, entendé qué representa cada archivo y después probá la planilla. Los buenos hábitos también se aprenden desde el primer cambio guardado.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Abrir ruta del estudiante</a>
+              <a class="button secondary" href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/teacher-flow.md">Ver guía docente</a>
+            </div>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="habitos-title">
+          <article class="card wide">
+            <h2 id="habitos-title" class="section-title">Buenos hábitos que practicamos</h2>
+            <div class="pill-row">
+              <span class="pill">Separar herramientas</span>
+              <span class="pill">Explicar antes de correr</span>
+              <span class="pill">Validar ejemplos</span>
+              <span class="pill">Cuidar datos públicos</span>
+              <span class="pill">Documentar decisiones</span>
+              <span class="pill">Compartir conocimiento</span>
+            </div>
+          </article>
+          <article class="card wide soft">
+            <h2 class="section-title">Verificación</h2>
+            <p class="meta">
+              El kit incluye validaciones simples y una checklist manual para comprobar que el recorrido funciona antes de llevarlo al aula.
+            </p>
+            <div class="actions">
+              <a class="button secondary" href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/verification-checklist.md">Abrir checklist</a>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Hecho para aprendizaje público, progresivo y compartible.</span>
+        <span><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/README.md">Leer README</a></span>
+      </footer>
+    </div>
   </body>
 </html>
