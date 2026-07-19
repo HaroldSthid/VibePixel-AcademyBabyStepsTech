@@ -8,10 +8,13 @@ requiring the full application stack.
 from __future__ import annotations
 
 import json
+import re
+import os
 import tempfile
 from pathlib import Path
 
 from rgb_discovery_tools import (
+    HELPER_VERSION,
     DEFAULT_OUTPUT_CSV,
     DEFAULT_OUTPUT_PNG,
     fit_study_image,
@@ -57,11 +60,18 @@ def _cell_source_by_id(notebook: dict, cell_id: str) -> str:
     raise AssertionError(f"Could not find notebook code cell with id '{cell_id}'.")
 
 
+def _bootstrap_source_with_helper_url(notebook: dict, helper_url: str) -> str:
+    source = _cell_source_by_id(notebook, "bootstrap")
+    return re.sub(r'HELPER_URL = ".*?"', f'HELPER_URL = "{helper_url}"', source, count=1)
+
+
 def check_notebook_contract() -> None:
     notebook = _load_notebook()
     notebook_text = json.dumps(notebook, ensure_ascii=False)
 
     _check("rgb_discovery_tools.py" in notebook_text, "Notebook should bootstrap the helper module.")
+    _check("EXPECTED_HELPER_VERSION" in notebook_text, "Notebook should pin the helper version.")
+    _check("REQUIRED_HELPER_ATTRIBUTES" in notebook_text, "Notebook should validate the helper API.")
     _check("student_alias" in notebook_text, "Notebook should ask for the student alias.")
     _check("normalize_student_alias" in notebook_text, "Notebook should validate the alias format.")
     _check("submissions" in notebook_text, "Notebook should prepare a submissions folder.")
@@ -72,6 +82,33 @@ def check_notebook_contract() -> None:
 
     for cell_id in ["bootstrap", "choose-image", "student-alias", "export-csv", "rebuild-png", "submission"]:
         _check(cell_id in notebook_text, f"Notebook should include a '{cell_id}' code cell.")
+
+
+def check_bootstrap_refreshes_stale_helper() -> None:
+    notebook = _load_notebook()
+    bootstrap_source = _bootstrap_source_with_helper_url(notebook, HELPER_PATH.resolve().as_uri())
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
+        stale_helper = temp_path / "rgb_discovery_tools.py"
+        stale_helper.write_text(
+            'HELPER_VERSION = "0.0.1"\n\n'
+            'def download_sample_image(*args, **kwargs):\n'
+            '    raise RuntimeError("stale helper should be replaced")\n',
+            encoding="utf-8",
+        )
+
+        namespace = {"__name__": "__main__"}
+        previous_cwd = Path.cwd()
+        try:
+            os.chdir(temp_path)
+            exec(compile(bootstrap_source, f"{NOTEBOOK_PATH.name}#bootstrap", "exec"), namespace)
+        finally:
+            os.chdir(previous_cwd)
+
+        rgb = namespace["rgb"]
+        _check(hasattr(rgb, "normalize_student_alias"), "Bootstrap should refresh stale helpers until normalize_student_alias exists.")
+        _check(getattr(rgb, "HELPER_VERSION", None) == HELPER_VERSION, "Bootstrap should load the expected helper version.")
 
 
 def check_helper_round_trip() -> None:
@@ -160,6 +197,7 @@ def check_helper_validation_errors() -> None:
 
 def main() -> int:
     check_notebook_contract()
+    check_bootstrap_refreshes_stale_helper()
     check_helper_round_trip()
     check_helper_validation_errors()
     print(json.dumps({"status": "passed", "notebook": str(NOTEBOOK_PATH)}, indent=2))

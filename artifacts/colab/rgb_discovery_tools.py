@@ -41,6 +41,7 @@ DEFAULT_OUTPUT_CSV = "rgb-discovery-output.csv"
 DEFAULT_OUTPUT_PNG = "rgb-discovery-revealed.png"
 DEFAULT_MAX_SIDE = 48
 DEFAULT_DOWNLOAD_TIMEOUT = 10
+HELPER_VERSION = "1.1.0"
 
 
 class RGBDiscoveryError(ValueError):
