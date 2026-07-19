@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mapa del sitio | VibePixel Academy BabyStepsTech</title>
+    <meta
+      name="description"
+      content="Mapa simple en forma de árbol para ubicar la ruta de aprendizaje, los recursos y la referencia en GitHub."
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
+      :root { color-scheme: light; --bg:#f4f2eb; --surface:#fbfaf6; --surface-alt:#efebe2; --text:#171717; --muted:#5f5a52; --brand:#171717; --brand-soft:#e4e0d7; --border:#d6d0c4; --accent-red:#c84949; --accent-green:#2f7d55; --accent-amber:#a66b2e; --shadow:0 10px 24px rgba(17,17,17,.06); --radius:8px; --max:1080px; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color:var(--text); line-height:1.6; background:linear-gradient(180deg,#f5f3ed 0%,#eeebe3 100%); }
+      a { color:var(--brand); text-decoration:underline; text-underline-offset:.18em; }
+      a:focus-visible { outline:2px solid var(--brand); outline-offset:3px; }
+      .shell { max-width:var(--max); margin:0 auto; padding:24px; }
+      .topbar, .footer { display:flex; justify-content:space-between; gap:16px; align-items:center; }
+      .topbar { margin-bottom:28px; }
+      .brand { font-weight:800; letter-spacing:-.02em; }
+      .nav { display:flex; flex-wrap:wrap; gap:8px; }
+      .nav a, .footer a { text-decoration:none; }
+      .nav a { display:inline-flex; align-items:center; min-height:36px; padding:8px 12px; border:1px solid var(--brand); border-radius:6px; background:var(--brand); color:var(--surface); font-size:.88rem; font-weight:700; }
+      .hero, .card { background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--brand); border-radius:var(--radius); box-shadow:var(--shadow); }
+      .hero { padding:36px; }
+      .eyebrow { display:inline-flex; align-items:center; gap:8px; margin:0; padding:6px 12px; border-radius:6px; background:var(--brand-soft); color:var(--brand); font-size:.9rem; font-weight:700; }
+      h1, h2, h3 { margin:0 0 14px; line-height:1.15; }
+      h1 { max-width:14ch; margin-top:16px; font-size:clamp(2.2rem,4vw,4rem); letter-spacing:-.04em; }
+      .lead { max-width:72ch; color:var(--muted); font-size:1.1rem; }
+      .section { margin-top:24px; }
+      .card { padding:22px; }
+      .card.soft { background:var(--surface-alt); }
+      .section-title { font-size:1.5rem; }
+      .meta { color:var(--muted); font-size:.95rem; }
+      .tree, .tree ul { list-style:none; margin:0; padding-left:1.15rem; }
+      .tree { padding-left:0; }
+      .node { position:relative; margin:0.9rem 0; padding-left:1rem; }
+      .node::before { content:"├─"; position:absolute; left:0; color:var(--muted); }
+      .node.leaf::before { content:"└─"; }
+      .node strong { display:block; margin-bottom:4px; }
+      .node .meta { margin:0; }
+      .badge { display:inline-block; margin-left:8px; padding:2px 8px; border:1px solid var(--border); border-radius:999px; background:var(--surface-alt); color:var(--muted); font-size:.82rem; }
+      .footer { margin:30px 0 10px; color:var(--muted); font-size:.95rem; }
+      @media (max-width:860px) { .topbar, .footer { flex-direction:column; align-items:flex-start; } .hero { padding:24px; } }
+      @media (max-width:600px) { .shell { padding:16px; } }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VibePixel Academy BabyStepsTech</div>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="submissions.html">Entregas</a>
+          <a href="artifacts/rgb-discovery/rgb-discovery.html">RGB</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Mapa del sitio</p>
+          <h1>Acá ves la ruta completa, sin perderte.</h1>
+          <p class="lead">Este mapa muestra qué abre cada página, qué hace el estudiante ahí y qué evidencia confirma que ya puede seguir.</p>
+        </section>
+
+        <section class="section card" aria-labelledby="tree-title">
+          <h2 id="tree-title" class="section-title">Ruta en árbol</h2>
+          <ul class="tree">
+            <li class="node">
+              <strong><a href="index.html">Home</a></strong>
+              <p class="meta">Qué hace: empieza por la guía general y ubica el recorrido. Evidencia: la persona puede nombrar el siguiente paso sin adivinar.</p>
+              <ul>
+                <li class="node">
+                  <strong><a href="onboarding.html">Onboarding</a></strong>
+                  <p class="meta">Qué hace: sigue la ruta paso a paso. Evidencia: ve qué abrir, qué hacer y qué resultado confirma el avance.</p>
+                  <ul>
+                    <li class="node">
+                      <strong><a href="artifacts/rgb-discovery/rgb-discovery.html">Desafío RGB</a></strong>
+                      <p class="meta">Qué hace: compara CSV y PNG para descubrir la imagen escondida. Evidencia: explica cómo los datos se volvieron color.</p>
+                    </li>
+                    <li class="node">
+                      <strong><a href="colab-onboarding.html">Colab</a></strong> <span class="badge">actual</span>
+                      <p class="meta">Qué hace: abre el notebook del avatar pipeline, usa datos de ejemplo y valida la exportación. Evidencia: aparece la vista previa y sale un archivo descargable.</p>
+                      <p class="meta"><strong>Próximo:</strong> Colab del desafío RGB <span class="badge">en preparación</span>. Todavía no está publicado como ruta paso a paso.</p>
+                    </li>
+                    <li class="node">
+                      <strong><a href="codepen-onboarding.html">CodePen</a></strong>
+                      <p class="meta">Qué hace: separa HTML, CSS y JS para mostrar el avatar en la web. Evidencia: el preview carga y cada panel queda claro.</p>
+                    </li>
+                    <li class="node leaf">
+                      <strong><a href="submissions.html">Entrega Top 10</a></strong>
+                      <p class="meta">Qué hace: junta CSV, PNG y reflexión en la propuesta de entrega/cambio o carpeta habilitada. Evidencia: la entrega está en el lugar correcto y se entiende qué revisar primero.</p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="node">
+              <strong><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/tree/main/docs">Recursos / referencias</a></strong>
+              <p class="meta">Qué hace: guarda ayudas, guías escritas y archivos de apoyo. Evidencia: se usa solo cuando hace falta volver a mirar algo.</p>
+            </li>
+            <li class="node leaf">
+              <strong><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech">GitHub repository</a></strong>
+              <p class="meta">Qué hace: aloja el material base y la referencia técnica. Evidencia: se usa como biblioteca secundaria, no como primera puerta.</p>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Si te perdés, volvés acá y seguís por el nodo que te toque.</span>
+        <span><a href="index.html">Volver al inicio</a></span>
+      </footer>
+    </div>
+  </body>
+</html>
