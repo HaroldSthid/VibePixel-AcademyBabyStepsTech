@@ -82,20 +82,6 @@
         display: grid; gap: 14px; padding: 22px; border: 1px dashed var(--border); border-radius: 10px; background: rgba(255, 255, 255, .5);
       }
       .empty-state strong { font-size: 1.05rem; }
-      .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
-      table { width: 100%; border-collapse: collapse; min-width: 760px; }
-      th, td { padding: 14px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
-      th { background: #f7f4ed; font-size: .88rem; text-transform: uppercase; letter-spacing: .04em; }
-      td { color: var(--muted); }
-      tr:last-child td { border-bottom: 0; }
-      .badge {
-        display: inline-flex; align-items: center; justify-content: center; min-width: 44px; padding: 6px 10px; border-radius: 999px;
-        background: var(--brand); color: var(--surface); font-weight: 800; font-size: .9rem;
-      }
-      .mono { font-family: inherit; word-break: break-word; }
-      .code {
-        margin: 12px 0 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; background: #fff; color: var(--text); overflow-x: auto;
-      }
       .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
       .pill { padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; }
       .pill:nth-child(3n + 1) { border-left-color: var(--accent-red); }
@@ -120,121 +106,48 @@
           <a href="index.html">Inicio</a>
           <a href="onboarding.html">Onboarding</a>
           <a href="submissions.html">Entregas</a>
-          <a href="sitemap.html">Mapa</a>
         </nav>
       </header>
 
       <main>
         <section class="hero">
-          <p class="eyebrow">Reconocimiento manual, después de revisar con calma</p>
+          <p class="eyebrow">Un espacio para reconocer avances reales</p>
           <h1>Top 10 de entregas revisadas.</h1>
           <p class="lead">
-            Todas las personas pueden enviar. Esta página no reemplaza la entrega: solo muestra las entregas seleccionadas después de la revisión de la propuesta de cambio.
-            No hay publicaciones automáticas.
+            Todas las personas pueden enviar su trabajo. Acá solo aparecen las entregas que ya pasaron revisión y fueron seleccionadas para destacarse.
           </p>
           <div class="actions">
             <a class="button primary" href="#estado">Ver estado actual</a>
-            <a class="button secondary" href="submissions.html">Volver a entregas</a>
-            <a class="button secondary" href="submissions.html">Ver guía de entrega</a>
-            <a class="button secondary" href="onboarding.html">Volver al onboarding</a>
+            <a class="button secondary" href="#preparar">Cómo preparar mi entrega</a>
+            <a class="button secondary" href="submissions.html">Ir a entregas</a>
+            <a class="button secondary" href="onboarding.html">Ir al onboarding</a>
           </div>
-        </section>
-
-        <section class="section grid cards" aria-labelledby="idea-title">
-          <article class="card wide soft">
-            <h2 id="idea-title" class="section-title">Qué muestra y qué no</h2>
-            <ul class="list">
-              <li>Acá solo entran entregas que ya fueron revisadas y seleccionadas.</li>
-              <li>La fecha visible debe salir de la revisión, el merge o la publicación de la PR.</li>
-              <li>No usamos la fecha local del archivo, porque eso no cuenta la historia real del trabajo.</li>
-            </ul>
-          </article>
-          <article class="card soft">
-            <h3>Quién puede enviar</h3>
-            <p class="meta">Todas las personas que participan de la actividad pueden entregar. El Top 10 es una selección, no una barrera.</p>
-          </article>
-          <article class="card soft">
-            <h3>Cómo se decide</h3>
-            <p class="meta">Primero se revisa la propuesta de cambio. Después, si corresponde, se publica la entrega destacada en esta lista.</p>
-          </article>
         </section>
 
         <section id="estado" class="section grid cards" aria-labelledby="estado-title">
           <article class="card full">
             <h2 id="estado-title" class="section-title">Estado actual</h2>
             <div class="empty-state" role="status" aria-live="polite">
-              <strong>Todavía no hay entregas publicadas</strong>
-              <p class="meta">Cuando haya revisiones aprobadas, acá aparecerán los puestos del 1 al 10 con su evidencia y una nota breve.</p>
+              <strong>Ahora mismo no hay entregas publicadas</strong>
+              <p class="meta">Cuando haya revisiones aprobadas, este espacio mostrará los puestos del 1 al 10 con una nota corta y su enlace de referencia.</p>
             </div>
           </article>
         </section>
 
-        <section class="section grid cards" aria-labelledby="formato-title">
-          <article class="card full soft">
-            <h2 id="formato-title" class="section-title">Formato de cada ficha</h2>
-            <div class="table-wrap" aria-label="Campos de la ficha Top 10">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Alias</th>
-                    <th>Fecha de reconocimiento</th>
-                    <th>Vista previa</th>
-                    <th>Evidencia / PR</th>
-                    <th>Nota corta</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="badge">#1</span></td>
-                    <td class="mono">ALIAS</td>
-                    <td class="mono">2026-00-00</td>
-                    <td class="mono">top10/previews/ALIAS.png</td>
-                    <td class="mono">https://github.com/&lt;org&gt;/&lt;repo&gt;/pull/123</td>
-                    <td>Texto breve sobre qué se reconoció.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="meta">Si todavía no querés publicar datos reales, dejá esta estructura como referencia y mantené el estado vacío.</p>
-          </article>
-        </section>
-
-        <section class="section grid cards" aria-labelledby="update-title">
+        <section id="preparar" class="section grid cards" aria-labelledby="preparar-title">
           <article class="card wide">
-            <h2 id="update-title" class="section-title">Cómo se actualiza a mano</h2>
-            <ol class="list">
-              <li>Revisá la PR o la entrega y elegí las que sí van a aparecer.</li>
-              <li>Copiá alias, fecha de revisión/merge, enlace de evidencia y nota corta.</li>
-              <li>Guardá el cambio y publicá solo lo que ya pasó por revisión.</li>
-            </ol>
+            <h2 id="preparar-title" class="section-title">Cómo preparar mi entrega</h2>
+            <ul class="list">
+              <li>Contá brevemente qué hiciste y qué aprendiste.</li>
+              <li>Dejá un enlace claro a tu entrega para que puedan revisarla.</li>
+              <li>Si te sirve, abrí la <a href="submissions.html">guía de entregas</a> para ordenar tu envío antes de publicarlo.</li>
+            </ul>
           </article>
           <article class="card wide soft">
-            <h2 class="section-title">Estructura sugerida</h2>
-            <div class="code">
-              <pre><code>{
-  "updatedAt": "YYYY-MM-DD",
-  "entries": [
-    {
-      "rank": 1,
-      "alias": "ALIAS",
-      "recognitionDate": "YYYY-MM-DD",
-      "dateSource": "review | merge | PR publication",
-      "imagePreviewPath": "top10/previews/ALIAS.png",
-      "evidenceUrl": "https://github.com/&lt;org&gt;/&lt;repo&gt;/pull/123",
-      "shortNote": "Texto corto y amable sobre el logro."
-    }
-  ]
-}</code></pre>
-            </div>
-          </article>
-        </section>
-
-        <section class="section grid cards" aria-labelledby="future-title">
-          <article class="card full">
-            <h2 id="future-title" class="section-title">Más adelante</h2>
+            <h2 class="section-title">Para facilitadores</h2>
             <p class="meta">
-              Si algún día conviene, esta misma idea puede pasar a Apps Script + Sheets + Drive. Por ahora no está implementado: la versión actual sigue siendo manual y clara.
+              La referencia técnica, el formato interno y las notas de mantenimiento están en
+              <a href="top10/README.md">top10/README.md</a>.
             </p>
           </article>
         </section>
@@ -253,7 +166,7 @@
 
       <footer class="footer">
         <span>Se publica con criterio humano, no con automatización.</span>
-        <span><a href="sitemap.html">Mapa del sitio</a> · <a href="submissions.html">Entregas</a></span>
+        <span><a href="submissions.html">Entregas</a> · <a href="onboarding.html">Onboarding</a></span>
       </footer>
     </div>
     <script src="assets/site-map.js" defer></script>

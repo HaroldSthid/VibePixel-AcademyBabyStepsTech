@@ -1,25 +1,29 @@
 # Top 10 manual
 
-Esta carpeta documenta la galería manual de entregas revisadas.
+Referencia para facilitadores. La página pública está pensada para estudiantes; este archivo guarda el criterio operativo.
 
-## Cómo se usa
+## Qué se publica
 
-1. Revisá la propuesta de cambio o PR.
-2. Elegí qué entregas van al Top 10.
-3. Actualizá `top10.html` con alias, rank, evidencia y nota corta.
-4. Usá la fecha de revisión, merge o publicación de la PR.
+- Solo entregas revisadas y seleccionadas.
+- La fecha visible debe venir de revisión, merge o publicación de la PR.
+- No usar la fecha local del archivo como referencia.
 
-## Importante
+## Cómo se actualiza
 
-- Todas las personas pueden entregar.
-- El Top 10 solo muestra reconocimientos seleccionados.
-- No uses la fecha de creación local del archivo como referencia.
-- No hay automatización todavía.
+1. Revisar la entrega o PR.
+2. Elegir qué entradas van al Top 10.
+3. Actualizar `top10.html` con el material publicado.
 
-## Estructura de referencia
+## Campos de referencia
 
-Usá `data.example.json` como guía para completar los campos.
+- rank
+- alias
+- recognitionDate
+- dateSource
+- imagePreviewPath
+- evidenceUrl
+- shortNote
 
-## Futuro
+## Nota
 
-Más adelante, esta misma idea podría vivir en Apps Script + Sheets + Drive. Por ahora queda manual.
+Si hace falta automatizar más adelante, esta base puede migrar a Apps Script + Sheets + Drive. Por ahora queda manual.
