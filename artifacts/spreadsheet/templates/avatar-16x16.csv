@@ -1,0 +1,11 @@
+frame_id,row,col,value
+idle_01,0,0,1
+idle_01,0,1,#FFCC00
+idle_01,0,2,"255,204,0"
+idle_01,1,0,1
+idle_01,1,1,#FFE066
+wave_01,0,0,2
+wave_01,0,1,#00CCFF
+wave_01,0,2,"0,153,255"
+wave_01,1,0,2
+wave_01,1,1,#66D9FF

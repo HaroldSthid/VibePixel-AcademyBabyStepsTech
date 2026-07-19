@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VibePixel CodePen Workshop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="workshop-shell">
+      <header class="hero">
+        <p class="eyebrow">CodePen starter</p>
+        <h1>Customize your exported avatar</h1>
+        <p class="lede">
+          Paste a public HTTPS GIF URL from Colab into <code>avatarConfig.avatarAssetUrl</code>,
+          then copy the HTML panel block, CSS, and JS into the matching CodePen panels and edit
+          only the labeled learner zones.
+        </p>
+      </header>
+
+      <!-- CodePen HTML panel copy block: copy everything between these comments into the
+           CodePen HTML panel. Do not copy the local <link> in the <head> or the local
+           <script> tag at the end of this file into CodePen. -->
+
+      <section class="panel panel--preview" aria-labelledby="preview-title">
+        <div class="panel__heading">
+          <h2 id="preview-title">Preview</h2>
+          <p id="assetStatus" class="status" role="status">Waiting for a public avatar URL.</p>
+        </div>
+
+        <figure class="avatar-stage">
+          <span class="avatar-stage__badge" id="previewBadge">Workshop badge</span>
+          <img
+            id="avatarPreview"
+            class="avatar-stage__image"
+            alt="Learner avatar preview"
+          />
+          <figcaption class="avatar-stage__caption">
+            The preview updates when you paste a public HTTPS URL.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="panel panel--zones" aria-labelledby="zones-title">
+        <h2 id="zones-title">Learner edit zones</h2>
+
+        <div class="zones-grid">
+          <article class="zone-card">
+            <h3>HTML</h3>
+            <p>Change copy, labels, captions, and lightweight workshop content only.</p>
+          </article>
+
+          <article class="zone-card">
+            <h3>CSS</h3>
+            <p>Adjust layout, accessories, colors, and simple visual experiments.</p>
+          </article>
+
+          <article class="zone-card">
+            <h3>JS</h3>
+            <p>Wire the avatar URL, toggle tiny interactions, and keep the flow readable.</p>
+          </article>
+        </div>
+
+        <div class="controls" aria-label="Workshop controls">
+          <label class="field">
+            <span>Badge text</span>
+            <input id="badgeInput" type="text" value="Workshop badge" />
+          </label>
+
+          <button id="badgeToggle" type="button">Toggle badge</button>
+        </div>
+      </section>
+
+      <!-- End CodePen HTML panel copy block -->
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
