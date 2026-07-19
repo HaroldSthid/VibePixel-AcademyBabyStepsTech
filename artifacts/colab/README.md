@@ -9,7 +9,14 @@ Usá esta carpeta para importar la exportación de la planilla, previsualizar el
 3. Si tu exportación tiene un solo frame, usá la imagen fija generada como preview.
 4. Copiá el GIF o PNG exportado en `artifacts/exports/avatars/` cuando quieras dejar listo el handoff dentro del repo.
 
-## Validación
+## Si algo falla
+
+- Si aparece un error que nombra `avatar_pipeline`, en Colab abrí **Runtime** en el menú superior, elegí **Restart runtime** y corré desde la primera celda. El notebook debería descargar el archivo solo.
+- Si aparece `avatar-16x16.csv` faltante, hacé lo mismo: **Runtime → Restart runtime** y empezá desde la primera celda para que baje la muestra automáticamente.
+- Si la red o GitHub están bloqueados, probá más tarde o pedile ayuda a quien esté facilitando la clase.
+- Cuando todo vuelve a andar, deberías ver la importación completa, la vista previa y la exportación final sin tocar archivos a mano.
+
+## Validación para facilitadores / mantenimiento
 
 Ejecutá `python validate_avatar_pipeline.py` en la misma carpeta para chequear imports válidos, ayuda ante celdas inválidas, renderizado del preview, exportación GIF multi-frame, el fallback de primera corrida del CSV y el mensaje de recuperación del notebook. Si falta Pillow, instalalo con `pip install pillow` primero.
 
