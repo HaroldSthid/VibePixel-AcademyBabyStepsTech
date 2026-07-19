@@ -5,7 +5,7 @@ Use this folder to parse the spreadsheet export, preview the avatar, and export 
 ## Quick path
 
 1. Copy the exported spreadsheet CSV into the Colab session or point the notebook at `artifacts/spreadsheet/templates/avatar-16x16.csv`.
-2. Open `vibepixel_avatar_pipeline.ipynb` and run the import, preview, and export cells in order.
+2. Open `vibepixel_avatar_pipeline.ipynb` and run the import, preview, and export cells in order. The first import cell will fetch `avatar_pipeline.py` automatically if it is missing, so students do not need to copy files by hand.
 3. If your export has one frame only, use the generated still preview image.
 4. Copy the exported GIF or PNG into `artifacts/exports/avatars/` when you want the repo-hosted handoff.
 
