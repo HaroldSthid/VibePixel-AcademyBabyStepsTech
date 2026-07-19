@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Onboarding | VibePixel Academy BabyStepsTech</title>
+    <title>Entregas | VibePixel Academy BabyStepsTech</title>
     <meta
       name="description"
-      content="Ruta guiada para estudiantes no técnicos: qué abrir, qué hacer y qué evidencia de logro buscar en cada paso."
+      content="Guía amable para saber dónde poner el CSV, el PNG y la reflexión sin necesitar experiencia previa con PRs."
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
@@ -85,6 +85,9 @@
       .step:nth-child(3n + 2) { border-left-color: var(--accent-green); }
       .step:nth-child(3n) { border-left-color: var(--accent-amber); }
       .step-number { display: grid; width: 56px; height: 56px; place-items: center; border-radius: 8px; background: var(--brand-soft); color: var(--brand); font-size: 1.2rem; font-weight: 800; }
+      .code {
+        margin: 12px 0 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; background: #fff; color: var(--text); overflow-x: auto;
+      }
       .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
       .pill { padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; }
       .pill:nth-child(3n + 1) { border-left-color: var(--accent-red); }
@@ -109,122 +112,128 @@
         <div class="brand">VibePixel Academy BabyStepsTech</div>
         <nav class="nav" aria-label="Navegación principal">
           <a href="index.html">Inicio</a>
-          <a href="colab-onboarding.html">Colab</a>
-          <a href="codepen-onboarding.html">CodePen</a>
-          <a href="submissions.html">Entregas</a>
-          <a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Referencia en GitHub</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="artifacts/rgb-discovery/rgb-discovery.html">RGB</a>
+          <a href="submissions/TEMPLATE.md">Plantilla</a>
         </nav>
       </header>
 
       <main>
         <section class="hero">
-          <p class="eyebrow">Onboarding para empezar sin miedo</p>
-          <h1>Primero la ruta, después las herramientas.</h1>
+          <p class="eyebrow">Entregas claras, sin adivinar dónde va cada cosa</p>
+          <h1>Tu entrega empieza acá.</h1>
           <p class="lead">
-            Esta página está pensada para la primera visita. Te dice qué abrir, qué hacer y cómo reconocer que cada etapa salió bien.
+            Abrí esta página primero. Después elegí el camino que te toque: la propuesta de entrega/cambio en GitHub, o la carpeta de entregas si tu facilitador ya la habilitó.
+            No necesitás saber PR de memoria; acá lo llamamos <strong>propuesta de entrega/cambio</strong>.
           </p>
           <div class="actions">
-            <a class="button primary" href="#ruta">Ver ruta completa</a>
-            <a class="button secondary" href="artifacts/rgb-discovery/rgb-discovery.html">Desafío RGB</a>
-            <a class="button secondary" href="colab-onboarding.html">Ir a Colab</a>
-            <a class="button secondary" href="codepen-onboarding.html">Ir a CodePen</a>
-            <a class="button secondary" href="submissions.html">Cómo entregar</a>
+            <a class="button primary" href="#ruta">Ver la ruta</a>
+            <a class="button secondary" href="submissions/TEMPLATE.md">Abrir plantilla</a>
+            <a class="button secondary" href="onboarding.html">Volver al onboarding</a>
+            <a class="button secondary" href="artifacts/rgb-discovery/rgb-discovery.html">Volver al RGB</a>
           </div>
         </section>
 
         <section class="section grid cards" aria-labelledby="quick-title">
           <article class="card wide soft">
-            <h2 id="quick-title" class="section-title">Resumen rápido</h2>
-            <p class="meta">
-              El camino ideal es simple: entender la idea, descubrir los colores en el desafío RGB, probar en Colab, pasar a CodePen y compartir el resultado. En el desafío podés conversar y pedir ayuda, pero el Top 10 se construye con evidencia propia.
-            </p>
+            <h2 id="quick-title" class="section-title">Ruta corta</h2>
+            <ol class="list">
+              <li>Juntá tu CSV, tu PNG y una reflexión breve.</li>
+              <li>Elegí cómo entregar: propuesta de entrega/cambio o carpeta de entregas habilitada.</li>
+              <li>Dejá tu evidencia en el lugar correcto y avisá qué querés que revisen primero.</li>
+            </ol>
           </article>
           <article class="card soft">
-            <h3>Resultado visible</h3>
-            <p class="meta">En cada etapa hay una evidencia concreta que te dice “ya está listo para avanzar”.</p>
+            <h3>PR, en simple</h3>
+            <p class="meta">Es una propuesta de entrega/cambio: un lugar para mostrar lo que hiciste y pedir revisión con calma.</p>
           </article>
           <article class="card soft">
-            <h3>Regla de oro</h3>
-            <p class="meta">Si todavía no ves el resultado esperado, no saltes al siguiente paso: colaborá, pero mostrá tu propia evidencia y tu propio razonamiento.</p>
+            <h3>Qué no cambia</h3>
+            <p class="meta">Tu trabajo sigue siendo tuyo, aun cuando converses con otras personas o trabajes en colaboración sana.</p>
           </article>
         </section>
 
         <section id="ruta" class="section grid cards" aria-labelledby="ruta-title">
           <article class="card full">
-            <h2 id="ruta-title" class="section-title">Ruta guiada</h2>
+            <h2 id="ruta-title" class="section-title">Dónde va cada cosa</h2>
             <div class="timeline">
               <div class="step">
                 <div class="step-number">1</div>
                 <div>
-                  <h3>Abrí la guía del estudiante</h3>
-                  <p class="meta">Usala como mapa. No necesitás entender todo al principio; solo ubicar dónde empieza el recorrido.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> ves la ruta completa y sabes que no hace falta entrar al repositorio para arrancar.</p>
+                  <h3>CSV y PNG</h3>
+                  <p class="meta">Si la clase ya habilitó la carpeta de entregas, ponelos dentro de <code>submissions/&lt;alias-o-nombre&gt;/</code>. Si no, compartilos o enlazalos en tu propuesta de entrega/cambio.</p>
+                  <p class="meta"><strong>Importante:</strong> no los escondas en otro lugar del repo ni los subas donde no te los pidieron.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-number">2</div>
                 <div>
-                  <h3>Resolvé el desafío RGB</h3>
-                  <p class="meta">Abrí el CSV, buscá el patrón de colores y comparalo con la vista previa PNG. La idea es descubrir que los números y las celdas estaban armando una imagen; podés pensarlo en grupo, pero el hallazgo tiene que quedar claro en tu propia evidencia.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> reconocés la imagen escondida y podés explicar cómo pasó de datos a color.</p>
+                  <h3>Reflexión breve</h3>
+                  <p class="meta">Pegala en el cuerpo de la propuesta de entrega/cambio. Si hay carpeta habilitada, también puede ir en <code>submissions/&lt;alias-o-nombre&gt;/README.md</code> usando la plantilla.</p>
+                  <p class="meta"><strong>Pedí ayuda con palabras simples:</strong> qué descubriste, cómo lo comprobaste y qué te costó más.</p>
                 </div>
               </div>
               <div class="step">
                 <div class="step-number">3</div>
                 <div>
-                  <h3>Probalo en Colab</h3>
-                  <p class="meta">Colab sirve para revisar, corregir y exportar. Acá no se “programa por programar”: se valida el material.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> aparece una vista previa del avatar y se genera una imagen o GIF descargable.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-number">4</div>
-                <div>
-                  <h3>Llevá el resultado a CodePen</h3>
-                  <p class="meta">CodePen es el taller web. Cada panel tiene una tarea distinta y eso ayuda a no mezclar todo.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> el preview muestra el avatar y los paneles quedan ordenados por HTML, CSS y JS.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="step-number">5</div>
-                <div>
-                  <h3>Revisá y compartí</h3>
-                  <p class="meta">Contá qué cambiaste, qué aprendiste y qué te gustaría mejorar después. La explicación también forma parte del aprendizaje.</p>
-                  <p class="meta"><strong>Evidencia de logro:</strong> podés mostrar el resultado y explicar qué parte cambió y por qué.</p>
+                  <h3>Qué revisar primero</h3>
+                  <p class="meta">Decilo al final: por ejemplo, “mirá primero la evidencia, después mi reflexión”. Así quien revisa no tiene que adivinar.</p>
+                  <p class="meta"><strong>Meta:</strong> que la revisión sea amable, clara y rápida de entender.</p>
                 </div>
               </div>
             </div>
           </article>
         </section>
 
-        <section class="section grid cards" aria-labelledby="success-title">
+        <section class="section grid cards" aria-labelledby="mode-title">
           <article class="card wide soft">
-            <h2 id="success-title" class="section-title">Qué significa “funciona”</h2>
-            <ul class="list">
-              <li>La persona no técnica puede seguir la ruta sin preguntar dónde empezar.</li>
-              <li>Cada etapa tiene un resultado visible que confirma el avance.</li>
-              <li>GitHub queda como referencia secundaria, no como la primera puerta.</li>
-              <li>El camino evita exceso de texto y evita mostrar código innecesario al inicio.</li>
-            </ul>
+            <h2 id="mode-title" class="section-title">Modo de entrega recomendado</h2>
+            <p class="meta">
+              Usá la propuesta de entrega/cambio como tu puerta principal. Ahí ponés tu reflexión, los enlaces o archivos de evidencia y una frase corta sobre qué querés que miren primero.
+            </p>
+            <div class="code">
+              <strong>Si la carpeta todavía no existe:</strong><br />
+              1. Abrí la plantilla.<br />
+              2. Pegá la reflexión en la propuesta de entrega/cambio.<br />
+              3. Adjuntá o enlazá tu CSV y tu PNG.<br />
+            </div>
           </article>
           <article class="card wide">
+            <h2 class="section-title">Si ya habilitaron la carpeta</h2>
+            <div class="code">
+              <code>submissions/&lt;alias-o-nombre&gt;/</code><br />
+              ├─ <code>README.md</code><br />
+              ├─ <code>rgb-discovery.csv</code><br />
+              └─ <code>rgb-discovery-preview.png</code>
+            </div>
+            <p class="meta">Esa carpeta es solo para la clase cuando el facilitador la active. Mientras tanto, la propuesta de entrega/cambio sigue siendo suficiente.</p>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="privacy-title">
+          <article class="card wide">
+            <h2 id="privacy-title" class="section-title">Cuidate</h2>
+            <ul class="list">
+              <li>No subas datos privados.</li>
+              <li>No incluyas fotos personales, salvo permiso explícito.</li>
+              <li>No compartas contraseñas, correos privados ni documentos sensibles.</li>
+            </ul>
+          </article>
+          <article class="card wide soft">
             <h2 class="section-title">Siguiente paso claro</h2>
             <div class="pill-row">
-               <span class="pill"><a href="artifacts/rgb-discovery/rgb-discovery.html">Abrir desafío RGB</a></span>
-              <span class="pill"><a href="colab-onboarding.html">Abrir Colab</a></span>
-              <span class="pill"><a href="codepen-onboarding.html">Abrir CodePen</a></span>
-               <span class="pill"><a href="submissions.html">Preparar entrega</a></span>
-              <span class="pill"><a href="index.html">Volver al inicio</a></span>
-              <span class="pill"><a href="https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/blob/main/docs/learner-flow.md">Referencia GitHub</a></span>
+              <span class="pill"><a href="submissions/TEMPLATE.md">Abrir plantilla</a></span>
+              <span class="pill"><a href="submissions/README.md">Leer la guía escrita</a></span>
+              <span class="pill"><a href="onboarding.html">Volver al onboarding</a></span>
             </div>
           </article>
         </section>
       </main>
 
       <footer class="footer">
-        <span>Empieza por aquí cuando no quieras pelearte con el repositorio.</span>
+        <span>La idea es que entregues sin pelearte con el repositorio.</span>
         <span><a href="index.html">Volver al inicio</a></span>
       </footer>
     </div>
   </body>
-</html>
+  </html>

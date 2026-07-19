@@ -9,6 +9,7 @@ Podés conversar con tu grupo, pero el Top 10 es individual: cada persona tiene 
 - [Versión web para estudiantes](./rgb-discovery.html)
 - [Abrir CSV](./rgb-discovery.csv)
 - [Abrir PNG de vista previa](./rgb-discovery-preview.png)
+- [Guía de entregas individuales](../../submissions.html)
 
 ## Ruta rápida
 
@@ -28,3 +29,7 @@ Podés conversar con tu grupo, pero el Top 10 es individual: cada persona tiene 
 ## Nota
 
 El archivo `Imagen Final.xlsx` se usa solo como fuente local. No se publica.
+
+## Entrega pensada para Top 10
+
+Si querés preparar tu propuesta de entrega/cambio, abrí primero la guía web de [`submissions`](../../submissions.html). Ahí está la ruta clara, la plantilla y los cuidados de privacidad.
