@@ -2,6 +2,8 @@
 
 Primero mirá la matriz RGB en el CSV. Después comparala con el PNG de vista previa. Si ambos muestran la misma imagen, descubriste el mensaje escondido en la planilla.
 
+Podés conversar con tu grupo, pero el Top 10 es individual: cada persona tiene que mostrar su propia evidencia y explicar su propio descubrimiento.
+
 ## Acceso amigable
 
 - [Versión web para estudiantes](./rgb-discovery.html)
