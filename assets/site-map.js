@@ -27,7 +27,7 @@
       href: "colab-onboarding.html",
       before: "Antes necesitás el Desafío RGB.",
       after: "Después seguís con CodePen.",
-      note: "Pipeline de avatar/sample-data disponible ahora · Colab RGB paso a paso en preparación",
+       note: "El pipeline de avatar y los datos de ejemplo ya están disponibles. La guía paso a paso de Colab RGB sigue en preparación.",
     },
     {
       key: "codepen",
@@ -68,7 +68,7 @@
   siteMap.className = "site-map";
   siteMap.dataset.open = "false";
   siteMap.innerHTML = `
-    <button type="button" class="site-map__toggle" aria-controls="site-map-drawer" aria-expanded="false">Mapa</button>
+    <button type="button" class="site-map__toggle" aria-controls="site-map-drawer" aria-expanded="false" aria-label="Abrir mapa lateral de aprendizaje">Mapa</button>
     <div class="site-map__overlay" hidden></div>
     <aside id="site-map-drawer" class="site-map__drawer" aria-hidden="true" aria-label="Mapa lateral de aprendizaje">
       <div class="site-map__panel" role="document">
@@ -77,7 +77,7 @@
             <p class="site-map__eyebrow">Mapa lateral</p>
             <h2 class="site-map__title">Ruta de aprendizaje</h2>
           </div>
-          <button type="button" class="site-map__close">Cerrar</button>
+          <button type="button" class="site-map__close" aria-label="Cerrar mapa lateral de aprendizaje">Cerrar</button>
         </header>
 
         <section class="site-map__current" aria-label="Contexto actual">
@@ -112,6 +112,8 @@
   const overlay = siteMap.querySelector(".site-map__overlay");
   const closeButton = siteMap.querySelector(".site-map__close");
   const focusTarget = closeButton;
+  const supportsInert = "inert" in drawer;
+  const managedTabindex = new Map();
   drawer.tabIndex = -1;
   const focusableSelector = [
     'a[href]',
@@ -122,11 +124,13 @@
     '[tabindex]:not([tabindex="-1"])',
   ].join(', ');
 
+  setDrawerState(false);
+
   const open = () => {
     siteMap.dataset.open = "true";
     overlay.hidden = false;
     toggle.setAttribute("aria-expanded", "true");
-    drawer.setAttribute("aria-hidden", "false");
+    setDrawerState(true);
     window.setTimeout(() => {
       (focusTarget || drawer).focus();
     }, 0);
@@ -136,7 +140,7 @@
     siteMap.dataset.open = "false";
     overlay.hidden = true;
     toggle.setAttribute("aria-expanded", "false");
-    drawer.setAttribute("aria-hidden", "true");
+    setDrawerState(false);
     toggle.focus();
   };
 
@@ -199,9 +203,65 @@
           ${isCurrent ? '<span class="site-map__badge site-map__badge--current">Estás acá</span>' : ""}
         </a>
         <p class="site-map__hint"><strong>Antes necesitás…</strong> ${escapeHtml(item.before)} <strong>Después seguís con…</strong> ${escapeHtml(item.after)}</p>
-        ${item.note ? `<span class="site-map__note">${escapeHtml(item.note)}</span>` : ""}
+        ${item.note ? `
+          <div class="site-map__alert" role="note" aria-label="En preparación">
+            <svg class="site-map__alert-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <path d="M10 2 1.7 17h16.6L10 2zm0 4.1 4.7 8.4H5.3L10 6.1zm0 3.1c.44 0 .8.36.8.8v2.9a.8.8 0 1 1-1.6 0V10c0-.44.36-.8.8-.8zm0 6.1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="currentColor"/>
+            </svg>
+            <div class="site-map__alert-body">
+              <strong class="site-map__alert-title">En preparación</strong>
+              <p class="site-map__alert-text">${escapeHtml(item.note)}</p>
+            </div>
+          </div>
+        ` : ""}
       </li>
     `;
+  }
+
+  function setDrawerState(isOpen) {
+    drawer.setAttribute("aria-hidden", isOpen ? "false" : "true");
+
+    if (supportsInert) {
+      drawer.inert = !isOpen;
+      return;
+    }
+
+    if (isOpen) {
+      for (const element of Array.from(managedTabindex.keys())) {
+        restoreTabIndex(element);
+      }
+
+      return;
+    }
+
+    for (const element of getFocusableElements(drawer)) {
+      lockTabIndex(element);
+    }
+  }
+
+  function lockTabIndex(element) {
+    if (managedTabindex.has(element)) {
+      return;
+    }
+
+    managedTabindex.set(element, element.getAttribute("tabindex"));
+    element.setAttribute("tabindex", "-1");
+  }
+
+  function restoreTabIndex(element) {
+    if (!managedTabindex.has(element)) {
+      return;
+    }
+
+    const previousTabIndex = managedTabindex.get(element);
+    managedTabindex.delete(element);
+
+    if (previousTabIndex === null) {
+      element.removeAttribute("tabindex");
+      return;
+    }
+
+    element.setAttribute("tabindex", previousTabIndex);
   }
 
   function normalizeRoot(value) {

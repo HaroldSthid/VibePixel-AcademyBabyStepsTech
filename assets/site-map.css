@@ -212,15 +212,40 @@
   font-size: 0.9rem;
 }
 
-.site-map__note {
-  display: inline-flex;
-  margin-top: 0.45rem;
-  padding: 0.25rem 0.55rem;
-  border-radius: 999px;
-  background: var(--site-map-bg-alt);
-  color: var(--site-map-muted);
-  font-size: 0.8rem;
-  font-weight: 700;
+.site-map__alert {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin-top: 0.65rem;
+  padding: 0.8rem 0.9rem;
+  border-left: 4px solid #a46a00;
+  border-radius: 12px;
+  background: #fff6e3;
+  color: #6b4700;
+}
+
+.site-map__alert-icon {
+  flex: 0 0 auto;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.1rem;
+}
+
+.site-map__alert-body {
+  min-width: 0;
+}
+
+.site-map__alert-title {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.site-map__alert-text {
+  margin: 0;
+  font-size: 0.84rem;
+  color: inherit;
 }
 
 .site-map__secondary {
