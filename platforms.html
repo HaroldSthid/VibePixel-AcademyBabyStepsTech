@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plataformas | VibePixel Academy BabyStepsTech</title>
+    <meta
+      name="description"
+      content="Contexto simple para GitHub, Google Colab y CodePen: qué son, por qué importan y cómo reconocerlas sin perderse."
+    />
+    <link rel="stylesheet" href="assets/site-map.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
+      :root { color-scheme: light; --bg:#f4f2eb; --surface:#fbfaf6; --surface-alt:#efebe2; --text:#171717; --muted:#5f5a52; --brand:#171717; --brand-soft:#e4e0d7; --border:#d6d0c4; --accent-red:#c84949; --accent-green:#2f7d55; --accent-amber:#a66b2e; --shadow:0 10px 24px rgba(17,17,17,.06); --radius:8px; --max:1080px; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; font-family:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color:var(--text); line-height:1.6; background:linear-gradient(180deg,#f5f3ed 0%,#eeebe3 100%); }
+      a { color:var(--brand); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.18em; }
+      a:hover { text-decoration-thickness:2px; }
+      a:focus-visible, .button:focus-visible { outline:2px solid var(--brand); outline-offset:3px; }
+      .shell { max-width:var(--max); margin:0 auto; padding:24px; }
+      .topbar, .footer { display:flex; justify-content:space-between; gap:16px; align-items:center; }
+      .topbar { margin-bottom:28px; }
+      .brand { font-weight:800; letter-spacing:-.02em; }
+      .nav { display:flex; flex-wrap:wrap; gap:8px; }
+      .nav a, .button, .footer a { text-decoration:none; }
+      .nav a { display:inline-flex; align-items:center; min-height:36px; padding:8px 12px; border:1px solid var(--brand); border-radius:6px; background:var(--brand); color:var(--surface); font-size:.88rem; font-weight:700; }
+      .hero, .card { background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--brand); border-radius:var(--radius); box-shadow:var(--shadow); }
+      .hero { padding:36px; }
+      .eyebrow { display:inline-flex; align-items:center; gap:8px; margin:0; padding:6px 12px; border-radius:6px; background:var(--brand-soft); color:var(--brand); font-size:.9rem; font-weight:700; }
+      h1, h2, h3 { margin:0 0 14px; line-height:1.15; }
+      h1 { max-width:14ch; margin-top:16px; font-size:clamp(2.2rem,4vw,4rem); letter-spacing:-.04em; }
+      .lead { max-width:72ch; color:var(--muted); font-size:1.1rem; }
+      .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+      .button { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border:1px solid transparent; border-radius:6px; font-weight:700; }
+      .button.primary { background:var(--brand); color:var(--surface); }
+      .button.secondary { border-color:var(--border); color:var(--text); }
+      .section { margin-top:24px; }
+      .grid { display:grid; gap:18px; }
+      .grid.cards { grid-template-columns:repeat(12, minmax(0, 1fr)); }
+      .card { grid-column:span 4; padding:22px; }
+      .card:nth-of-type(3n + 1) { border-top-color:var(--accent-red); }
+      .card:nth-of-type(3n + 2) { border-top-color:var(--accent-green); }
+      .card:nth-of-type(3n) { border-top-color:var(--accent-amber); }
+      .card.wide { grid-column:span 6; }
+      .card.full { grid-column:1 / -1; }
+      .card.soft { background:var(--surface-alt); }
+      .section-title { font-size:1.5rem; }
+      .meta { color:var(--muted); font-size:.95rem; }
+      .list { margin:0; padding-left:18px; }
+      .list li + li { margin-top:8px; }
+      .video-shell { margin-top:14px; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#f8f5ee; }
+      .video-shell iframe { display:block; width:100%; aspect-ratio:16 / 9; border:0; }
+      .video-copy { margin:0; padding:14px 16px; border-top:1px solid var(--border); background:#fff; color:var(--muted); }
+      .support-note { margin:14px 0 0; color:var(--muted); }
+      .support-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+      .support-link { display:inline-flex; align-items:center; min-height:36px; padding:8px 12px; border:1px solid var(--border); border-left:4px solid var(--brand); border-radius:6px; background:var(--surface); color:var(--muted); font-size:.92rem; text-decoration:none; }
+      .support-link:nth-child(3n + 1) { border-left-color:var(--accent-red); }
+      .support-link:nth-child(3n + 2) { border-left-color:var(--accent-green); }
+      .support-link:nth-child(3n) { border-left-color:var(--accent-amber); }
+      .footer { margin:30px 0 10px; color:var(--muted); font-size:.95rem; }
+      @media (max-width:860px) { .card, .card.wide { grid-column:1 / -1; } .topbar, .footer { flex-direction:column; align-items:flex-start; } .hero { padding:24px; } }
+      @media (max-width:600px) { .shell { padding:16px; } }
+    </style>
+  </head>
+  <body data-site-key="platforms" data-site-root="">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VibePixel Academy BabyStepsTech</div>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="github-onboarding.html">GitHub sin miedo</a>
+          <a href="colab-onboarding.html">Colab</a>
+          <a href="codepen-onboarding.html">CodePen</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Contexto de plataformas</p>
+          <h1>Las interfaces cambian; el criterio, no.</h1>
+          <p class="lead">
+            En la era IA, GitHub, Google Colab y CodePen ya no son “extras”: son recursos de trabajo. La pantalla puede cambiar,
+            pero la idea sigue siendo la misma: ordenar, probar y compartir sin miedo.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#plataformas">Ver las tres</a>
+            <a class="button secondary" href="colab-onboarding.html">Ir a Colab</a>
+            <a class="button secondary" href="codepen-onboarding.html">Ir a CodePen</a>
+            <a class="button secondary" href="github-onboarding.html">Ir a GitHub</a>
+          </div>
+        </section>
+
+        <section id="plataformas" class="section grid cards" aria-labelledby="overview-title">
+          <article class="card full soft">
+            <h2 id="overview-title" class="section-title">Qué cambia y qué se mantiene</h2>
+            <p class="meta">
+              Cambian los botones, cambian los menús y cambian los nombres de algunas funciones. Lo que no cambia es el hábito:
+              entender dónde guardo, dónde pruebo y dónde muestro.
+            </p>
+            <p class="meta">
+              Para el recorrido práctico, primero pasás por Colab, después CodePen y finalmente GitHub para entregar evidencia.
+            </p>
+          </article>
+
+          <article class="card wide soft">
+            <p class="eyebrow">GitHub</p>
+            <h3>La biblioteca con mesa de revisión</h3>
+            <p class="meta">Es el lugar para guardar evidencia, pedir mirada y dejar una propuesta clara de entrega/cambio.</p>
+            <p class="meta"><strong>En esta ruta:</strong> aparece cuando tenés que subir tu trabajo, completar la plantilla y pedir revisión sin perder la calma.</p>
+            <ul class="list">
+              <li><strong>Hacks:</strong> nombrá bien; subí solo lo que corresponde; dejá un mensaje corto y claro.</li>
+              <li><strong>Confusión común:</strong> pensar que todo lo visible hay que editarlo. No: muchas veces solo se revisa.</li>
+            </ul>
+            <div class="video-shell">
+              <iframe title="Video oficial de contexto de GitHub" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ZhsprZVR4Sg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="video-copy">Video oficial de contexto de GitHub. Si no carga, seguí la explicación escrita de arriba.</p>
+            <p class="support-note"><strong>Apoyos opcionales:</strong> si te ayuda más verlo en otro formato, usá estas referencias extra en TikTok.</p>
+            <div class="support-links" aria-label="Referencias TikTok opcionales">
+              <a class="support-link" href="https://vt.tiktok.com/ZSXCKUdg3/" target="_blank" rel="noopener noreferrer">TikTok apoyo 1</a>
+              <a class="support-link" href="https://vt.tiktok.com/ZSXCKyQwJ/" target="_blank" rel="noopener noreferrer">TikTok apoyo 2</a>
+            </div>
+            <div class="section" aria-labelledby="github-ref-title">
+              <h4 id="github-ref-title">Referencia escrita</h4>
+              <p class="meta">Este video acompaña la explicación principal de GitHub. Si preferís, podés seguir solo con el texto de arriba y volver al video después.</p>
+            </div>
+          </article>
+
+          <article class="card wide soft">
+            <p class="eyebrow">Google Colab</p>
+            <h3>El cuaderno de laboratorio en la nube</h3>
+            <p class="meta">Es un espacio seguro para probar sin instalar nada, como un banco de trabajo donde el resultado importa más que pelearse con la máquina.</p>
+            <p class="meta"><strong>En esta ruta:</strong> lo usás para correr el taller, ver la vista previa y exportar el resultado con los datos de ejemplo primero.</p>
+            <ul class="list">
+              <li><strong>Hacks:</strong> empezá con la muestra; corré en orden; si falla, reiniciá y volvé a la primera celda.</li>
+              <li><strong>Confusión común:</strong> creer que hay que instalar todo. No: acá venís a mirar, probar y salir con evidencia.</li>
+            </ul>
+            <div class="video-shell">
+              <iframe title="Video oficial de contexto de Google Colab" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7NpZhK1nWJw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="video-copy">Video oficial de contexto de Google Colab. Si no carga, seguí la explicación escrita de arriba.</p>
+          </article>
+
+          <article class="card full soft">
+            <p class="eyebrow">CodePen</p>
+            <h3>El taller y showroom visual</h3>
+            <p class="meta">Es la mesa donde HTML, CSS y JS van separados, como estructura, apariencia y comportamiento. Así todo se entiende más rápido.</p>
+            <p class="meta"><strong>En esta ruta:</strong> lo usás cuando querés mostrar el avatar en la web y revisar cómo se ve sin mezclar piezas.</p>
+            <ul class="list">
+              <li><strong>Hacks:</strong> un panel por vez; mirá el preview temprano; usá URLs públicas HTTPS.</li>
+              <li><strong>Confusión común:</strong> mezclar todo como si fuera una sola caja. Separarlo es parte del aprendizaje.</li>
+            </ul>
+            <div class="video-shell">
+              <iframe title="Video oficial de contexto de CodePen" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HdrXHPRHUQE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="video-copy">Video oficial de contexto de CodePen. Si no carga, seguí la explicación escrita de arriba.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Primero entendés el mapa; después elegís la herramienta.</span>
+        <span><a href="sitemap.html">Mapa del sitio</a> · <a href="onboarding.html">Volver al onboarding</a></span>
+      </footer>
+    </div>
+    <script src="assets/site-map.js" defer></script>
+  </body>
+</html>

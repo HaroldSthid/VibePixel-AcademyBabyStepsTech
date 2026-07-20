@@ -12,7 +12,15 @@
       label: "Onboarding",
       href: "onboarding.html",
       before: "Primero pasás por Inicio.",
-      after: "Después seguís con Desafío RGB.",
+      after: "Después seguís con la vista de plataformas o con Desafío RGB.",
+    },
+    {
+      key: "platforms",
+      label: "Plataformas",
+      href: "platforms.html",
+      before: "Antes necesitás Onboarding.",
+      after: "Después elegís GitHub, Colab o CodePen.",
+      note: "Vista de contexto: ayuda a entender cada interfaz sin entrar todavía en el video final.",
     },
     {
       key: "rgb",
@@ -62,6 +70,7 @@
 
   const extras = [
     { label: "Mapa del sitio", href: "sitemap.html" },
+    { label: "Plataformas", href: "platforms.html" },
     { label: "Guía en GitHub", href: "https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech" },
     { label: "Referencia Markdown", href: "https://github.com/HaroldSthid/VibePixel-AcademyBabyStepsTech/tree/main/docs" },
   ];
@@ -308,6 +317,8 @@
     switch (file) {
       case "onboarding.html":
         return "onboarding";
+      case "platforms.html":
+        return "platforms";
       case "sitemap.html":
         return "sitemap";
       case "colab-onboarding.html":

@@ -93,11 +93,15 @@
       .code {
         margin: 12px 0 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; background: #fff; color: var(--text); overflow-x: auto;
       }
+      .video-shell { margin-top: 14px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #f8f5ee; }
+      .video-shell iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+      .video-copy { margin: 0; padding: 14px 16px; border-top: 1px solid var(--border); background: #fff; color: var(--muted); }
       .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
-      .pill { padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; }
+      .pill { display: inline-flex; align-items: center; padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; text-decoration: none; }
       .pill:nth-child(3n + 1) { border-left-color: var(--accent-red); }
       .pill:nth-child(3n + 2) { border-left-color: var(--accent-green); }
       .pill:nth-child(3n) { border-left-color: var(--accent-amber); }
+      .support-note { margin: 14px 0 0; color: var(--muted); }
       .footer { margin: 30px 0 10px; color: var(--muted); font-size: .95rem; }
       @media (max-width: 860px) {
         .card, .card.wide { grid-column: 1 / -1; }
@@ -118,6 +122,7 @@
         <nav class="nav" aria-label="Navegación principal">
           <a href="index.html">Inicio</a>
           <a href="onboarding.html">Onboarding</a>
+          <a href="platforms.html">Plataformas</a>
           <a href="submissions.html">Entregas</a>
           <a href="top10.html">Top 10</a>
           <a href="sitemap.html">Mapa</a>
@@ -134,11 +139,50 @@
           </p>
           <div class="actions">
             <a class="button primary" href="#ruta">Ver la ruta</a>
+            <a class="button secondary" href="platforms.html">Ver plataformas</a>
             <a class="button secondary" href="submissions.html">Ir a entregas</a>
             <a class="button secondary" href="submissions/TEMPLATE.md">Abrir plantilla</a>
             <a class="button secondary" href="onboarding.html">Volver al onboarding</a>
             <a class="button secondary" href="top10.html">Ver Top 10</a>
           </div>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="contexto-title">
+          <article class="card wide soft">
+            <p class="eyebrow">Contexto de plataforma</p>
+            <h2 id="contexto-title" class="section-title">GitHub es biblioteca, mesa de revisión y carpeta de evidencia</h2>
+            <p class="meta">Acá guardás versiones, pedís mirada y dejás un rastro claro de lo que cambió. Pensalo como una biblioteca donde también hay un mostrador para revisar y ordenar la entrega.</p>
+            <p class="meta"><strong>En la era IA:</strong> las interfaces cambian rápido, pero sigue siendo clave saber dónde dejar evidencia, cómo pedir revisión y cómo volver a encontrarla después.</p>
+            <p class="meta"><strong>En esta ruta:</strong> GitHub no reemplaza tu trabajo; lo ordena para que la entrega tenga un lugar seguro y entendible.</p>
+          </article>
+          <article class="card soft">
+            <h3>3 hacks</h3>
+            <ul class="list">
+              <li>Nombrá los archivos como si fueran carteles.</li>
+              <li>Subí solo lo que corresponde a tu entrega.</li>
+              <li>Escribí un mensaje corto para recordar qué cambió.</li>
+            </ul>
+          </article>
+          <article class="card soft">
+            <h3>Confusión común</h3>
+            <p class="meta">No todo lo que ves hay que editarlo. A veces GitHub se usa para revisar, comparar y dejar evidencia, no para complicarte más.</p>
+          </article>
+          <article class="card full soft">
+            <h3>Video oficial de contexto de GitHub</h3>
+            <div class="video-shell">
+              <iframe title="Video oficial de contexto de GitHub" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ZhsprZVR4Sg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="video-copy">Video oficial de contexto de GitHub. Si no carga, seguí la explicación escrita de esta página.</p>
+            <p class="support-note"><strong>Apoyos opcionales:</strong> si te resulta más cómodo, mirá estas referencias extra en TikTok.</p>
+            <div class="pill-row" aria-label="Referencias TikTok opcionales">
+              <a class="pill" href="https://vt.tiktok.com/ZSXCKUdg3/" target="_blank" rel="noopener noreferrer">TikTok apoyo 1</a>
+              <a class="pill" href="https://vt.tiktok.com/ZSXCKyQwJ/" target="_blank" rel="noopener noreferrer">TikTok apoyo 2</a>
+            </div>
+            <div class="section" aria-labelledby="github-ref-title">
+              <h4 id="github-ref-title">Referencia escrita</h4>
+              <p class="meta">Este video acompaña la explicación principal para que tengas una guía visual y otra escrita al mismo tiempo.</p>
+            </div>
+          </article>
         </section>
 
         <section class="section grid cards" aria-labelledby="why-title">
