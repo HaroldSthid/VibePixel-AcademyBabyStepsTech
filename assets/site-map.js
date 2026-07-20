@@ -121,7 +121,14 @@
           <h3 class="site-map__secondary-title">Apoyos secundarios</h3>
           <div class="site-map__secondary-links">
             ${extras
-              .map((item) => `<a href="${escapeAttribute(joinRoot(root, item.href))}">${escapeHtml(item.label)}</a>`)
+              .map((item) => {
+                const href = escapeAttribute(joinRoot(root, item.href));
+                const isExternal = /^https?:\/\//.test(item.href);
+                const externalCue = isExternal
+                  ? ' <span aria-hidden="true" class="external-link__icon">↗</span><span class="external-link__sr-only">. Abre otra plataforma.</span>'
+                  : "";
+                return `<a${isExternal ? ' class="external-link"' : ""} href="${href}">${escapeHtml(item.label)}${externalCue}</a>`;
+              })
               .join("")}
           </div>
         </section>
