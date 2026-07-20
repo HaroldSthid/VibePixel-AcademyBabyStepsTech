@@ -17,7 +17,7 @@
       a { color:var(--brand); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.18em; } a:hover { text-decoration-thickness:2px; } a:focus-visible, .button:focus-visible { outline:2px solid var(--brand); outline-offset:3px; }
       .shell { max-width:var(--max); margin:0 auto; padding:24px; } .topbar, .footer { display:flex; justify-content:space-between; gap:16px; align-items:center; } .topbar { margin-bottom:28px; } .brand { font-weight:800; letter-spacing:-.02em; } .nav { display:flex; flex-wrap:wrap; gap:8px; } .nav a, .button, .footer a { text-decoration:none; } .nav a { display:inline-flex; align-items:center; min-height:36px; padding:8px 12px; border:1px solid var(--brand); border-radius:6px; background:var(--brand); color:var(--surface); font-size:.88rem; font-weight:700; }
       .hero, .card { background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--brand); border-radius:var(--radius); box-shadow:var(--shadow); } .hero { padding:36px; } .eyebrow { display:inline-flex; align-items:center; gap:8px; margin:0; padding:6px 12px; border-radius:6px; background:var(--brand-soft); color:var(--brand); font-size:.9rem; font-weight:700; }
-      h1, h2, h3 { margin:0 0 14px; line-height:1.15; } h1 { max-width:14ch; margin-top:16px; font-size:clamp(2.2rem,4vw,4rem); letter-spacing:-.04em; } .lead { max-width:72ch; color:var(--muted); font-size:1.1rem; } .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; } .button { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border:1px solid transparent; border-radius:6px; font-weight:700; } .button.primary { background:var(--brand); color:var(--surface); } .button.secondary { border-color:var(--border); color:var(--text); }
+      h1, h2, h3 { margin:0 0 14px; line-height:1.15; } h1 { max-width:14ch; margin-top:16px; font-size:clamp(2.2rem,4vw,4rem); letter-spacing:-.04em; } .lead { max-width:72ch; color:var(--muted); font-size:1.1rem; } .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; } .button { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border:1px solid transparent; border-radius:6px; font-weight:700; } .button.primary { background:var(--brand); color:var(--surface); } .button.secondary { border-color:var(--border); color:var(--text); } .checkpoint { margin-top:18px; padding:16px 18px; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface-alt); } .checkpoint-title { margin:0 0 8px; font-size:1rem; } .checkpoint .meta { margin:0; } .checkpoint .meta + .meta { margin-top:6px; }
       .section { margin-top:24px; } .grid { display:grid; gap:18px; } .grid.cards { grid-template-columns:repeat(12, minmax(0, 1fr)); } .card { grid-column:span 4; padding:22px; } .card:nth-of-type(3n + 1) { border-top-color:var(--accent-red); } .card:nth-of-type(3n + 2) { border-top-color:var(--accent-green); } .card:nth-of-type(3n) { border-top-color:var(--accent-amber); } .card.wide { grid-column:span 6; } .card.full { grid-column:1 / -1; } .card.soft { background:var(--surface-alt); } .section-title { font-size:1.5rem; } .meta { color:var(--muted); font-size:.95rem; } .list { margin:0; padding-left:18px; } .list li + li { margin-top:8px; } .timeline { display:grid; gap:14px; } .step { display:grid; grid-template-columns:56px 1fr; gap:14px; align-items:start; padding:18px; border:1px solid var(--border); border-left:4px solid var(--brand); border-radius:var(--radius); background:var(--surface); } .step:nth-child(3n + 1) { border-left-color:var(--accent-red); } .step:nth-child(3n + 2) { border-left-color:var(--accent-green); } .step:nth-child(3n) { border-left-color:var(--accent-amber); } .step-number { display:grid; width:56px; height:56px; place-items:center; border-radius:8px; background:var(--brand-soft); color:var(--brand); font-size:1.2rem; font-weight:800; } .pill-row { display:flex; flex-wrap:wrap; gap:10px; } .pill { padding:7px 12px; border:1px solid var(--border); border-left:4px solid var(--brand); border-radius:6px; background:var(--surface); color:var(--muted); font-size:.92rem; } .pill:nth-child(3n + 1) { border-left-color:var(--accent-red); } .pill:nth-child(3n + 2) { border-left-color:var(--accent-green); } .pill:nth-child(3n) { border-left-color:var(--accent-amber); } .footer { margin:30px 0 10px; color:var(--muted); font-size:.95rem; }
       @media (max-width:860px) { .card, .card.wide { grid-column:1 / -1; } .topbar, .footer { flex-direction:column; align-items:flex-start; } .hero { padding:24px; } } @media (max-width:600px) { .shell { padding:16px; } .step { grid-template-columns:1fr; } .step-number { width:48px; height:48px; } }
     </style>
@@ -46,6 +46,12 @@
             <a class="button secondary" href="#errores">Errores comunes</a>
             <a class="button secondary" href="onboarding.html">Volver a la ruta</a>
           </div>
+          <article class="card soft checkpoint">
+            <h2 class="checkpoint-title">Ahora hacé esto</h2>
+            <p class="meta">Abrí el pen, pegá cada parte en su panel y mirá el preview antes de seguir.</p>
+            <p class="meta"><strong>Cómo sé que salió bien:</strong> el avatar aparece y los paneles quedan separados.</p>
+            <p class="meta"><strong>Volvé acá después:</strong> cuando ya comprobaste que HTML, CSS y JS hacen lo suyo.</p>
+          </article>
         </section>
 
         <section class="section grid cards" aria-labelledby="contexto-title">
@@ -68,13 +74,13 @@
             <h3>Confusión común</h3>
             <p class="meta">CodePen no es “todo en un solo bloque”. Separar HTML, CSS y JS es justamente lo que ayuda a aprender sin enredarse.</p>
           </article>
-          <article class="card full soft">
-            <h3>Video oficial de contexto de CodePen</h3>
+          <details class="card full soft">
+            <summary class="section-title">Video oficial de contexto de CodePen</summary>
             <div class="video-shell" style="margin-top:14px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#f8f5ee;">
               <iframe title="Video oficial de contexto de CodePen" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="display:block;width:100%;aspect-ratio:16 / 9;border:0;" src="https://www.youtube.com/embed/HdrXHPRHUQE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <p class="video-copy" style="margin:0;padding:14px 16px;border-top:1px solid var(--border);background:#fff;color:var(--muted);">Video oficial de contexto de CodePen. Si no carga, seguí la explicación escrita de esta página.</p>
-          </article>
+          </details>
         </section>
 
         <section class="section grid cards" aria-labelledby="codepen-title">

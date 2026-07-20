@@ -64,6 +64,10 @@
       .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid transparent; border-radius: 6px; font-weight: 700; }
       .button.primary { background: var(--brand); color: var(--surface); }
       .button.secondary { border-color: var(--border); color: var(--text); }
+      .checkpoint { margin-top: 18px; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-alt); }
+      .checkpoint-title { margin: 0 0 8px; font-size: 1rem; }
+      .checkpoint .meta { margin: 0; }
+      .checkpoint .meta + .meta { margin-top: 6px; }
       .section { margin-top: 24px; }
       .grid { display: grid; gap: 18px; }
       .grid.cards { grid-template-columns: repeat(12, minmax(0, 1fr)); }
@@ -145,6 +149,12 @@
             <a class="button secondary" href="onboarding.html">Volver al onboarding</a>
             <a class="button secondary" href="top10.html">Ver Top 10</a>
           </div>
+          <article class="card soft checkpoint">
+            <h2 class="checkpoint-title">Ahora hacé esto</h2>
+            <p class="meta">Entrá al repositorio, ubicá tu alias y prepará la evidencia sin perderte en la interfaz.</p>
+            <p class="meta"><strong>Cómo sé que salió bien:</strong> ves tus archivos listos y la propuesta de entrega/cambio abierta.</p>
+            <p class="meta"><strong>Volvé acá después:</strong> cuando ya pediste revisión y dejaste claro qué mirar primero.</p>
+          </article>
         </section>
 
         <section class="section grid cards" aria-labelledby="contexto-title">
@@ -167,8 +177,8 @@
             <h3>Confusión común</h3>
             <p class="meta">No todo lo que ves hay que editarlo. A veces GitHub se usa para revisar, comparar y dejar evidencia, no para complicarte más.</p>
           </article>
-          <article class="card full soft">
-            <h3>Video oficial de contexto de GitHub</h3>
+          <details class="card full soft">
+            <summary class="section-title">Video y apoyos opcionales de GitHub</summary>
             <div class="video-shell">
               <iframe title="Video oficial de contexto de GitHub" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ZhsprZVR4Sg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
@@ -182,7 +192,7 @@
               <h4 id="github-ref-title">Referencia escrita</h4>
               <p class="meta">Este video acompaña la explicación principal para que tengas una guía visual y otra escrita al mismo tiempo.</p>
             </div>
-          </article>
+          </details>
         </section>
 
         <section class="section grid cards" aria-labelledby="why-title">

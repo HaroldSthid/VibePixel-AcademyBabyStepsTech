@@ -154,6 +154,7 @@
     siteMap.dataset.open = "true";
     overlay.hidden = false;
     toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Cerrar mapa lateral de aprendizaje");
     setDrawerState(true);
     window.setTimeout(() => {
       (focusTarget || drawer).focus();
@@ -164,6 +165,7 @@
     siteMap.dataset.open = "false";
     overlay.hidden = true;
     toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Abrir mapa lateral de aprendizaje");
     setDrawerState(false);
     toggle.focus();
   };
@@ -222,22 +224,20 @@
     const isCurrent = item.key === currentKey;
     return `
       <li class="site-map__tree-item${isCurrent ? " site-map__tree-item--current" : ""}">
-        <a class="site-map__link" href="${escapeAttribute(joinRoot(root, item.href))}">
-          <span>${escapeHtml(item.label)}</span>
-          ${isCurrent ? '<span class="site-map__badge site-map__badge--current">Estás acá</span>' : ""}
-        </a>
-        <p class="site-map__hint"><strong>Antes necesitás…</strong> ${escapeHtml(item.before)} <strong>Después seguís con…</strong> ${escapeHtml(item.after)}</p>
-        ${item.note ? `
-          <div class="site-map__alert" role="note" aria-label="Publicado">
-            <svg class="site-map__alert-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-              <path d="M10 2 1.7 17h16.6L10 2zm0 4.1 4.7 8.4H5.3L10 6.1zm0 3.1c.44 0 .8.36.8.8v2.9a.8.8 0 1 1-1.6 0V10c0-.44.36-.8.8-.8zm0 6.1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="currentColor"/>
-            </svg>
-            <div class="site-map__alert-body">
-              <strong class="site-map__alert-title">Publicado</strong>
-              <p class="site-map__alert-text">${escapeHtml(item.note)}</p>
+        <div class="site-map__tree-main">
+          <a class="site-map__link" href="${escapeAttribute(joinRoot(root, item.href))}">
+            <span>${escapeHtml(item.label)}</span>
+            ${isCurrent ? '<span class="site-map__badge site-map__badge--current">Estás acá</span>' : ""}
+          </a>
+          <details class="site-map__details">
+            <summary>Ver detalle</summary>
+            <div class="site-map__details-body">
+              <p><strong>Antes necesitás…</strong> ${escapeHtml(item.before)}</p>
+              <p><strong>Después seguís con…</strong> ${escapeHtml(item.after)}</p>
+              ${item.note ? `<p class="site-map__details-note">${escapeHtml(item.note)}</p>` : ""}
             </div>
-          </div>
-        ` : ""}
+          </details>
+        </div>
       </li>
     `;
   }

@@ -64,6 +64,10 @@
       .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid transparent; border-radius: 6px; font-weight: 700; }
       .button.primary { background: var(--brand); color: var(--surface); }
       .button.secondary { border-color: var(--border); color: var(--text); }
+      .checkpoint { margin-top: 18px; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-alt); }
+      .checkpoint-title { margin: 0 0 8px; font-size: 1rem; }
+      .checkpoint .meta { margin: 0; }
+      .checkpoint .meta + .meta { margin-top: 6px; }
       .section { margin-top: 24px; }
       .grid { display: grid; gap: 18px; }
       .grid.cards { grid-template-columns: repeat(12, minmax(0, 1fr)); }
@@ -138,6 +142,12 @@
             <a class="button secondary" href="artifacts/rgb-discovery/rgb-discovery.html">Volver al RGB</a>
             <a class="button secondary" href="top10.html">Ver Top 10</a>
           </div>
+          <article class="card soft checkpoint">
+            <h2 class="checkpoint-title">Ahora hacé esto</h2>
+            <p class="meta">Juntá el CSV, el PNG y la reflexión breve antes de mover nada más.</p>
+            <p class="meta"><strong>Cómo sé que salió bien:</strong> la evidencia está lista para subir o enlazar sin dudas.</p>
+            <p class="meta"><strong>Volvé acá después:</strong> cuando ya dejaste claro dónde va cada archivo.</p>
+          </article>
         </section>
 
         <section class="section grid cards" aria-labelledby="quick-title">
