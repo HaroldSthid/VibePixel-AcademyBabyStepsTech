@@ -2,6 +2,8 @@
 
 Abrí primero [`submissions.html`](../submissions.html). Esa es la puerta amable: te dice dónde va cada cosa sin asumir que ya sabés cómo funciona una PR.
 
+Si la parte de GitHub todavía te pesa, abrí primero [`GitHub sin miedo`](../github-onboarding.html). Es la guía corta para llegar a la propuesta de entrega/cambio sin usar la terminal.
+
 Podés conversar con otras personas, comparar ideas y pedir ayuda. Pero tu entrega es tuya: cada estudiante muestra su propia evidencia y su propia explicación.
 
 ## Tu alias

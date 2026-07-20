@@ -34,13 +34,20 @@
       label: "CodePen",
       href: "codepen-onboarding.html",
       before: "Antes necesitás Colab.",
+      after: "Después seguís con GitHub sin miedo.",
+    },
+    {
+      key: "github",
+      label: "GitHub sin miedo",
+      href: "github-onboarding.html",
+      before: "Antes necesitás CodePen.",
       after: "Después seguís con Entrega Top 10.",
     },
     {
       key: "submissions",
       label: "Entrega Top 10",
       href: "submissions.html",
-      before: "Antes necesitás CodePen.",
+      before: "Antes necesitás GitHub sin miedo.",
       after: "Después cerrás el recorrido y compartís la evidencia.",
     },
     {
@@ -307,6 +314,8 @@
         return "colab";
       case "codepen-onboarding.html":
         return "codepen";
+      case "github-onboarding.html":
+        return "github";
       case "submissions.html":
         return "submissions";
       case "top10.html":

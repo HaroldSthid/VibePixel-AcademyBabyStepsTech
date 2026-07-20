@@ -2,6 +2,8 @@
 
 Copiá este texto en tu **propuesta de entrega/cambio**. Si la clase habilitó la carpeta de entregas, también podés pegarlo en `submissions/<ALIAS>/README.md`.
 
+Si GitHub todavía te resulta mucho, abrí primero [`GitHub sin miedo`](../github-onboarding.html). Después volvés acá y seguís con calma.
+
 ## 1. Datos generales
 
 - **Nombre o alias**: si usás alias, seguí la regla de 6 letras en mayúsculas: las 3 primeras letras de tu primer nombre + las 3 primeras letras de tu primer apellido.

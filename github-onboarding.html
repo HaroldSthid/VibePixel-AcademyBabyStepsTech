@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub sin miedo | VibePixel Academy BabyStepsTech</title>
+    <meta
+      name="description"
+      content="Micro módulo amable para entender GitHub, preparar la evidencia y abrir una propuesta de entrega/cambio sin usar la terminal."
+    />
+    <link rel="stylesheet" href="assets/site-map.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700;800&display=swap");
+
+      :root {
+        color-scheme: light;
+        --bg: #f4f2eb;
+        --surface: #fbfaf6;
+        --surface-alt: #efebe2;
+        --text: #171717;
+        --muted: #5f5a52;
+        --brand: #171717;
+        --brand-soft: #e4e0d7;
+        --border: #d6d0c4;
+        --accent-red: #c84949;
+        --accent-green: #2f7d55;
+        --accent-amber: #a66b2e;
+        --shadow: 0 10px 24px rgba(17, 17, 17, 0.06);
+        --radius: 8px;
+        --max: 1080px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        color: var(--text);
+        line-height: 1.6;
+        background: linear-gradient(180deg, #f5f3ed 0%, #eeebe3 100%);
+      }
+      a { color: var(--brand); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+      a:hover { text-decoration-thickness: 2px; }
+      a:focus-visible, .button:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+      .shell { max-width: var(--max); margin: 0 auto; padding: 24px; }
+      .topbar, .footer { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+      .topbar { margin-bottom: 28px; }
+      .brand { font-weight: 800; letter-spacing: -.02em; }
+      .nav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .nav a, .button, .footer a { text-decoration: none; }
+      .nav a {
+        display: inline-flex; align-items: center; min-height: 36px; padding: 8px 12px; border: 1px solid var(--brand);
+        border-radius: 6px; background: var(--brand); color: var(--surface); font-size: .88rem; font-weight: 700;
+      }
+      .hero, .card {
+        background: var(--surface); border: 1px solid var(--border); border-top: 4px solid var(--brand); border-radius: var(--radius); box-shadow: var(--shadow);
+      }
+      .hero { padding: 36px; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 6px 12px; border-radius: 6px; background: var(--brand-soft); color: var(--brand); font-size: .9rem; font-weight: 700; }
+      h1, h2, h3 { margin: 0 0 14px; line-height: 1.15; }
+      h1 { max-width: 14ch; margin-top: 16px; font-size: clamp(2.2rem, 4vw, 4rem); letter-spacing: -.04em; }
+      .lead { max-width: 72ch; color: var(--muted); font-size: 1.1rem; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+      .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid transparent; border-radius: 6px; font-weight: 700; }
+      .button.primary { background: var(--brand); color: var(--surface); }
+      .button.secondary { border-color: var(--border); color: var(--text); }
+      .section { margin-top: 24px; }
+      .grid { display: grid; gap: 18px; }
+      .grid.cards { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .card { grid-column: span 4; padding: 22px; }
+      .card:nth-of-type(3n + 1) { border-top-color: var(--accent-red); }
+      .card:nth-of-type(3n + 2) { border-top-color: var(--accent-green); }
+      .card:nth-of-type(3n) { border-top-color: var(--accent-amber); }
+      .card.wide { grid-column: span 6; }
+      .card.full { grid-column: 1 / -1; }
+      .card.soft { background: var(--surface-alt); }
+      .section-title { font-size: 1.5rem; }
+      .meta { color: var(--muted); font-size: .95rem; }
+      .list { margin: 0; padding-left: 18px; }
+      .list li + li { margin-top: 8px; }
+      .timeline { display: grid; gap: 14px; }
+      .step {
+        display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; padding: 18px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: var(--radius); background: var(--surface);
+      }
+      .step:nth-child(3n + 1) { border-left-color: var(--accent-red); }
+      .step:nth-child(3n + 2) { border-left-color: var(--accent-green); }
+      .step:nth-child(3n) { border-left-color: var(--accent-amber); }
+      .step-number { display: grid; width: 56px; height: 56px; place-items: center; border-radius: 8px; background: var(--brand-soft); color: var(--brand); font-size: 1.2rem; font-weight: 800; }
+      .table { width: 100%; border-collapse: collapse; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+      .table th, .table td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+      .table th { background: var(--surface-alt); }
+      .table tr:last-child th, .table tr:last-child td { border-bottom: 0; }
+      .code {
+        margin: 12px 0 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; background: #fff; color: var(--text); overflow-x: auto;
+      }
+      .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+      .pill { padding: 7px 12px; border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 6px; background: var(--surface); color: var(--muted); font-size: .92rem; }
+      .pill:nth-child(3n + 1) { border-left-color: var(--accent-red); }
+      .pill:nth-child(3n + 2) { border-left-color: var(--accent-green); }
+      .pill:nth-child(3n) { border-left-color: var(--accent-amber); }
+      .footer { margin: 30px 0 10px; color: var(--muted); font-size: .95rem; }
+      @media (max-width: 860px) {
+        .card, .card.wide { grid-column: 1 / -1; }
+        .topbar, .footer { flex-direction: column; align-items: flex-start; }
+        .hero { padding: 24px; }
+      }
+      @media (max-width: 600px) {
+        .shell { padding: 16px; }
+        .step { grid-template-columns: 1fr; }
+        .step-number { width: 48px; height: 48px; }
+      }
+    </style>
+  </head>
+  <body data-site-key="github" data-site-root="">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">VibePixel Academy BabyStepsTech</div>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="submissions.html">Entregas</a>
+          <a href="top10.html">Top 10</a>
+          <a href="sitemap.html">Mapa</a>
+          <a href="submissions/TEMPLATE.md">Plantilla</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">GitHub sin miedo: entregar tu evidencia</p>
+          <h1>Una propuesta, no una prueba.</h1>
+          <p class="lead">
+            Esta guía te acompaña para subir tu evidencia sin entrar en modo técnico. GitHub aparece acá porque necesitamos un lugar común para revisar entregas con calma, cuidar la información y dejar claro qué querés mostrar.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#ruta">Ver la ruta</a>
+            <a class="button secondary" href="submissions.html">Ir a entregas</a>
+            <a class="button secondary" href="submissions/TEMPLATE.md">Abrir plantilla</a>
+            <a class="button secondary" href="onboarding.html">Volver al onboarding</a>
+            <a class="button secondary" href="top10.html">Ver Top 10</a>
+          </div>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="why-title">
+          <article class="card wide soft">
+            <h2 id="why-title" class="section-title">Por qué GitHub aparece en este desafío</h2>
+            <p class="meta">
+              Porque necesitamos una forma simple de entregar evidencia, revisar con orden y guardar la versión correcta del trabajo. No es para asustarte: es para que tu entrega tenga una puerta clara y tu facilitador pueda ayudarte sin perseguir archivos sueltos.
+            </p>
+          </article>
+          <article class="card soft">
+            <h3>Primero lo mínimo</h3>
+            <p class="meta">No hace falta aprender toda la historia de Git. Solo lo justo para entregar bien.</p>
+          </article>
+          <article class="card soft">
+            <h3>Lo que buscamos</h3>
+            <p class="meta">Que puedas mostrar CSV, PNG y reflexión con una propuesta de entrega/cambio clara.</p>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="concepts-title">
+          <article class="card full">
+            <h2 id="concepts-title" class="section-title">Conceptos mínimos, en palabras simples</h2>
+            <table class="table" aria-label="Conceptos mínimos de GitHub">
+              <thead>
+                <tr>
+                  <th>Palabra</th>
+                  <th>Acá significa</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Repositorio</td>
+                  <td>El proyecto guardado online, como una carpeta pública o compartida.</td>
+                </tr>
+                <tr>
+                  <td>Archivo</td>
+                  <td>Tu evidencia: CSV, PNG, reflexión o README.</td>
+                </tr>
+                <tr>
+                  <td><code>submissions/&lt;ALIAS&gt;/</code></td>
+                  <td>Tu espacio de entrega dentro del proyecto.</td>
+                </tr>
+                <tr>
+                  <td>Commit</td>
+                  <td>Un cambio guardado con un mensaje corto.</td>
+                </tr>
+                <tr>
+                  <td>Pull Request</td>
+                  <td>Una propuesta de entrega/cambio para que alguien la revise.</td>
+                </tr>
+                <tr>
+                  <td>Review</td>
+                  <td>Alguien mira si está claro, completo y seguro.</td>
+                </tr>
+                <tr>
+                  <td>Merge</td>
+                  <td>La entrega fue aceptada y pasa a formar parte del proyecto.</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+
+        <section id="ruta" class="section grid cards" aria-labelledby="steps-title">
+          <article class="card full">
+            <h2 id="steps-title" class="section-title">Ruta corta usando solo GitHub web</h2>
+            <div class="timeline">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                  <h3>Entrá al repositorio</h3>
+                  <p class="meta">Abrí el proyecto en GitHub. Pensalo como abrir la carpeta general donde vive la actividad.</p>
+                  <p class="meta"><strong>Señal de éxito:</strong> ves el nombre del proyecto y encontrás la carpeta <code>submissions/</code>.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                  <h3>Buscá o creá tu alias</h3>
+                  <p class="meta">Si ya existe <code>submissions/&lt;ALIAS&gt;/</code>, abrilo. Si no existe, crealo agregando un archivo dentro de esa ruta, por ejemplo un <code>README.md</code>.</p>
+                  <p class="meta"><strong>Señal de éxito:</strong> ves tu alias y sabés dónde irá tu entrega.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                  <h3>Subí la evidencia</h3>
+                  <p class="meta">Usá <strong>Add file</strong> → <strong>Upload files</strong> o <strong>Create new file</strong>. Sumá tu CSV, tu PNG y la reflexión breve.</p>
+                  <p class="meta"><strong>Señal de éxito:</strong> los archivos aparecen en la carpeta correcta y se entiende qué aporta cada uno.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                  <h3>Escribí un mensaje corto</h3>
+                  <p class="meta">Guardá el cambio con una frase simple, como “Entrega RGB de HARPIR”. Ese mensaje es el recordatorio de qué cambió.</p>
+                  <p class="meta"><strong>Señal de éxito:</strong> ves el cambio guardado y podés volver a encontrarlo.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                  <h3>Abrí la propuesta de entrega/cambio</h3>
+                  <p class="meta">Creá la Pull Request desde GitHub. Acá la llamamos propuesta de entrega/cambio: es la forma amable de pedir revisión.</p>
+                  <p class="meta"><strong>Señal de éxito:</strong> la PR queda abierta con título claro y la plantilla completada.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">6</div>
+                <div>
+                  <h3>Completá la plantilla y pedí revisión</h3>
+                  <p class="meta">Decí qué entregas, qué querés que miren primero y qué detalle puede ayudar a entender tu trabajo. Después esperá la revisión y, si hace falta, ajustá.</p>
+                  <p class="meta"><strong>Señal de éxito:</strong> la persona que revisa entiende tu intención sin tener que adivinar.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="unexpected-title">
+          <article class="card wide soft">
+            <h2 id="unexpected-title" class="section-title">Si GitHub te pide algo inesperado</h2>
+            <ul class="list">
+              <li>Si te pide iniciar sesión o crear cuenta, usá la cuenta que te indicó el facilitador. Si no estás seguro, preguntá antes de usar una cuenta personal o privada.</li>
+              <li>Si te dice que no tenés permiso, elegí <strong>fork</strong> o <strong>create branch</strong> si aparece, o pasá a modo guiado / pedile ayuda al facilitador.</li>
+              <li>Si ves “create a new branch and start a pull request”, eso está bien: aceptalo para tu entrega.</li>
+              <li>Si se siente demasiado, no sigas solo: usá modo guiado o mandá los archivos al facilitador.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="check-title">
+          <article class="card wide soft">
+            <h2 id="check-title" class="section-title">Qué revisar en cada paso</h2>
+            <ul class="list">
+              <li><strong>Repositorio abierto:</strong> encontraste el proyecto correcto.</li>
+              <li><strong>Alias listo:</strong> sabés dónde vive tu entrega.</li>
+              <li><strong>Archivos subidos:</strong> CSV, PNG y reflexión están juntos.</li>
+              <li><strong>Commit guardado:</strong> el mensaje dice de qué trata el cambio.</li>
+              <li><strong>PR abierta:</strong> la propuesta quedó visible para revisión.</li>
+              <li><strong>Plantilla completa:</strong> nadie tiene que adivinar qué querías entregar.</li>
+            </ul>
+          </article>
+          <article class="card wide">
+            <h2 class="section-title">Qué no subir</h2>
+            <ul class="list">
+              <li>Datos privados.</li>
+              <li>Fotos personales sin permiso explícito.</li>
+              <li>Contraseñas o cuentas privadas.</li>
+              <li>Documentos sensibles o información que no querés compartir.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section grid cards" aria-labelledby="help-title">
+          <article class="card wide soft">
+            <h2 id="help-title" class="section-title">Si esto te pesa demasiado</h2>
+            <p class="meta">
+              No fuerces el flujo completo solo para no pedir ayuda. Mandá los archivos al facilitador o arrancá en modo guiado primero. Lo importante es entregar bien, no sufrir en silencio.
+            </p>
+          </article>
+          <article class="card wide">
+            <h2 class="section-title">Siguiente paso claro</h2>
+            <div class="pill-row">
+              <span class="pill"><a href="submissions.html">Ir a entregas</a></span>
+              <span class="pill"><a href="submissions/TEMPLATE.md">Abrir plantilla</a></span>
+              <span class="pill"><a href="submissions/README.md">Leer guía de entregas</a></span>
+              <span class="pill"><a href="onboarding.html">Volver al onboarding</a></span>
+              <span class="pill"><a href="index.html">Volver al inicio</a></span>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>GitHub acá no es una barrera: es la puerta amable para mostrar tu trabajo.</span>
+        <span><a href="sitemap.html">Mapa del sitio</a> · <a href="index.html">Volver al inicio</a></span>
+      </footer>
+    </div>
+    <script src="assets/site-map.js" defer></script>
+  </body>
+</html>
