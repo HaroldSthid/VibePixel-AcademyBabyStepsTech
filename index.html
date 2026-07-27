@@ -18,6 +18,60 @@
       a:hover {
         text-decoration-thickness: 2px;
       }
+
+      .route-companion {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        margin: 0 0 18px;
+        padding: 16px 18px;
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+        background: linear-gradient(135deg, rgba(228, 224, 215, 0.54), rgba(251, 250, 246, 0.82));
+      }
+
+      .route-companion__copy {
+        max-width: 66ch;
+      }
+
+      .route-companion__label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--brand);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .route-companion__scene {
+        display: flex;
+        justify-content: flex-end;
+        min-width: 190px;
+      }
+
+      .route-companion__image {
+        width: min(170px, 34vw);
+        height: auto;
+        padding: 14px;
+        border: 1px solid rgba(23, 23, 23, 0.12);
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(251, 250, 246, 0.92) 0%, rgba(228, 224, 215, 0.58) 100%);
+        box-shadow: 0 10px 22px rgba(17, 17, 17, 0.05);
+        filter: grayscale(1) contrast(0.96);
+        opacity: 0.82;
+      }
+
+      @media (max-width: 600px) {
+        .route-companion {
+          grid-template-columns: 1fr;
+        }
+
+        .route-companion__scene {
+          justify-content: flex-end;
+        }
+      }
     </style>
   </head>
   <body data-site-key="inicio" data-site-root="">
@@ -104,6 +158,15 @@
         <section id="ruta" class="section grid cards" aria-labelledby="ruta-title">
           <article class="card full">
             <h2 id="ruta-title" class="section-title">Ruta sugerida</h2>
+            <aside class="route-companion" aria-label="Recomendación sutil de la ruta">
+              <p class="meta route-companion__copy">
+                <span class="route-companion__label">Recomendación de ruta</span>
+                Si estás empezando, avanzá paso a paso. PD y su compañero aparecen solo para marcar el próximo movimiento, sin tapar tu recorrido.
+              </p>
+              <div class="route-companion__scene" aria-hidden="true">
+                <img class="route-companion__image" src="assets/Gemini_Generated_Image_acjtntacjtntacjt (1).png" alt="" />
+              </div>
+            </aside>
             <div class="timeline">
               <div class="step">
                 <div class="step-number">1</div>
