@@ -195,6 +195,15 @@
                   <p class="meta"><strong>Evidencia de logro:</strong> descargás el archivo o lo copiás a la carpeta de exportación del proyecto.</p>
                 </div>
               </div>
+              <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                  <h3>Reemplazá la muestra por tu propio avatar</h3>
+                  <p class="meta">Lo que ya sabés hacer en la planilla (elegir celda por celda y armar la imagen a mano) es exactamente el CSV que pide el notebook: cuatro columnas, <code>frame_id,row,col,value</code>, con <code>row</code> y <code>col</code> entre 0 y 15, y <code>value</code> como ID de paleta (1-4), <code>#RRGGBB</code>, <code>"R,G,B"</code> entre comillas, o vacío para transparente. Dos <code>frame_id</code> distintos = dos cuadros de animación.</p>
+                  <p class="meta">No hace falta escribir código nuevo: subí tu CSV al panel de archivos de Colab con el mismo nombre <code>avatar-16x16.csv</code> antes de correr la celda <code>load-data</code>. Como esa celda solo descarga la muestra <em>si el archivo no existe</em>, al encontrar el tuyo ya cargado usa el tuyo directo. Si preferís otro nombre de archivo, alcanza con cambiar el string en la línea <code>source_csv = Path("avatar-16x16.csv")</code>.</p>
+                  <p class="meta"><strong>Evidencia de logro:</strong> la vista previa y la exportación muestran tu propio dibujo, no la muestra.</p>
+                </div>
+              </div>
             </div>
           </article>
         </section>
@@ -235,9 +244,9 @@
               <div class="step">
                 <div class="step-number">B</div>
                 <div>
-                  <h3>Falta `avatar-16x16.csv`</h3>
-                  <p class="meta">En Colab, abrí <strong>Runtime</strong> en el menú superior, elegí <strong>Restart runtime</strong> y volvé a correr desde la primera celda. El archivo de ejemplo se descarga solo, así que no tenés que buscarlo ni subirlo manualmente.</p>
-                  <p class="meta"><strong>Cuando quedó bien:</strong> el flujo sigue, la muestra carga y después podés ver la preview y la exportación.</p>
+                  <h3>Ves la muestra vieja o falta `avatar-16x16.csv`</h3>
+                  <p class="meta">Si el resultado no cambia después de que se actualizó el notebook, es porque el archivo ya estaba descargado en tu sesión. <strong>Restart runtime no borra archivos en disco</strong>, solo reinicia el proceso de Python. Borrá `avatar-16x16.csv` (y `avatar_pipeline.py` si hace falta) desde el panel de archivos de Colab, o hacé <strong>Runtime → Disconnect and delete runtime</strong> para arrancar con disco limpio, y corré todo de nuevo desde la primera celda.</p>
+                  <p class="meta"><strong>Cuando quedó bien:</strong> la muestra (o tu propio archivo) se actualiza y ves el resultado esperado.</p>
                 </div>
               </div>
               <div class="step">
